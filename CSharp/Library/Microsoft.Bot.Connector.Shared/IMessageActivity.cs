@@ -43,6 +43,11 @@ namespace Microsoft.Bot.Connector
         IList<Attachment> Attachments { get; set; }
 
         /// <summary>
+        /// SuggestedActions are used to express actions for interacting with a card like keyboards/quickReplies
+        /// </summary>
+        IList<CardAction> SuggestedActions { get; set; }
+
+        /// <summary>
         /// Collection of Entity objects, each of which contains metadata about this activity. Each Entity object is typed.
         /// </summary>
         IList<Entity> Entities { get; set; }

@@ -687,13 +687,15 @@ export class Session extends events.EventEmitter {
     }
 
     private onSend(batch: IMessage[], cb: (err: Error) => void): void {
-        if (batch) {
+        if (batch && batch.length > 0) {
             this.options.onSend(batch, (err) => {
                 if (err) {
                     this.logger.error(this.dialogStack(), err);
                 }
                 cb(err);
             })
+        } else {
+            cb(null);
         }
     }
 

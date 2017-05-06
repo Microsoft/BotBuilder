@@ -2846,6 +2846,58 @@ export class RegExpRecognizer implements IIntentRecognizer {
     public recognize(context: IRecognizeContext, callback: (err: Error, result: IIntentRecognizerResult) => void): void;
 }
 
+/** 
+ * Version of the [RegExpRecognizer](/en-us/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer) 
+ * that uses the frameworks localization system to retrieve a localized regular expression.
+ * The lookup key in the index.json file should be provided and upon receiving a message for
+ * a new locale, the recognizer will retrieve the localized expression and a new case insensitive 
+ * `RegExp` will be created and used to recognize the intent. 
+ * 
+ * Libraries can use this feature to let a bot override their default matching expressions. just
+ * create instances of the recognizer using the namespace of your library and bot developers can 
+ * customize your matching expressions by using a `<namespace>.json` file in their locale directory.
+ */
+export class LocalizedRegExpRecognizer implements IIntentRecognizer {
+    /**
+     * Constructs a new instance of the recognizer.
+     * @param intent The name of the intent to return when the expression is matched.
+     * @param key Key for the expression in the `index.json` or `<namespace>.json` file.
+     * @param namespace (Optional) library namespace to lookup `key` from. The expression should be a string in the `<namespace>.json` locale file. 
+     */
+    constructor(intent: string, key: string, namespace?: string);
+
+    /** Attempts to match a users text utterance to an intent. See [IIntentRecognizer.recognize()](/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizer#recognize) for details. */
+    public recognize(context: IRecognizeContext, callback: (err: Error, result: IIntentRecognizerResult) => void): void;
+}
+
+/**
+ * Wraps a recognizer with a filter that lets you conditionally enable/disable the recognizer or filter the intents
+ * returned from the recognizer. This can be composed with an [IntentRecognizerSet](/en-us/node/builder/chat-reference/classes/_botbuilder_d_.intentrecognizerset)
+ * to conditionally enable or filter the output of an entire set of recognizers.
+ */
+export class RecognizerFilter implements IIntentRecognizer {
+    /**
+     * Constructs a new instance of the recognizer.
+     * @param recognizer The recognizer that should be either Conditionally enabled or have its output filtered.
+     */
+    constructor(recognizer: IIntentRecognizer);
+
+    /** Attempts to match a users text utterance to an intent. See [IIntentRecognizer.recognize()](/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizer#recognize) for details. */
+    public recognize(context: IRecognizeContext, callback: (err: Error, result: IIntentRecognizerResult) => void): void;
+
+    /**
+     * Registers a function to conditionally enable/disable the wrapped recognizer.
+     * @param handler Function called for every message. You should call `callback(null, true)` for every message that should be passed to the wrapped recognizer. 
+     */
+    public onEnabled(handler: (context: IRecognizeContext, callback: (err: Error, enabled: boolean) => void) => void): RecognizerFilter;
+
+    /**
+     * Registers a function to filter the output from the wrapped recognizer.
+     * @param handler Function called for every message that results in an intent with a score greater then 0.0. You should call `callback(null, { score: 0.0, intent: null })` to block an intent from being returned.
+     */
+    public onRecognized(handler: (context: IRecognizeContext, result: IIntentRecognizerResult, callback: (err: Error, result: IIntentRecognizerResult) => void) => void): RecognizerFilter;
+}
+
 /**
  * Intent recognizer plugin that detects a users intent using Microsofts [Language Understanding Intelligent Service (LUIS)](https://luis.ai)
  * The service URLs for multiple LUIS models (apps) can be passed in to support recognition 

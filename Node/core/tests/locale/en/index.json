@@ -2,5 +2,6 @@
     "id1": "index-en1",
     "id2": "index-en2",
     "id3": ["index-en3-a", "index-en3-b", "index-en3-c"],
-    "id4": "index-en4"
+    "id4": "index-en4",
+    "exp1": "^help"
 }

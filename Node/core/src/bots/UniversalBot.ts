@@ -292,7 +292,7 @@ export class UniversalBot extends Library {
                 }, cb);
             }, cb);
         }, this.errorLogger((err) => {
-            if (!err) {
+            if (!err && list.length > 0) {
                 this.tryCatch(() => {
                     // All messages should be targeted at the same channel.
                     var channelId = list[0].address.channelId;
@@ -303,7 +303,7 @@ export class UniversalBot extends Library {
                     connector.send(list, this.errorLogger(done));
                 }, this.errorLogger(done));
             } else if (done) {
-                done(null);
+                done(err);
             }
         }));
     }

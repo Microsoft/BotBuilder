@@ -557,13 +557,16 @@ var Session = (function (_super) {
     };
     Session.prototype.onSend = function (batch, cb) {
         var _this = this;
-        if (batch) {
+        if (batch && batch.length > 0) {
             this.options.onSend(batch, function (err) {
                 if (err) {
                     _this.logger.error(_this.dialogStack(), err);
                 }
                 cb(err);
             });
+        }
+        else {
+            cb(null);
         }
     };
     Session.prototype.onFinishBatch = function (cb) {

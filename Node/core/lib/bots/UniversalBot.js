@@ -202,7 +202,7 @@ var UniversalBot = (function (_super) {
                 }, cb);
             }, cb);
         }, this.errorLogger(function (err) {
-            if (!err) {
+            if (!err && list.length > 0) {
                 _this.tryCatch(function () {
                     var channelId = list[0].address.channelId;
                     var connector = _this.connector(channelId);
@@ -213,7 +213,7 @@ var UniversalBot = (function (_super) {
                 }, _this.errorLogger(done));
             }
             else if (done) {
-                done(null);
+                done(err);
             }
         }));
     };

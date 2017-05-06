@@ -25,7 +25,7 @@ namespace Microsoft.Bot.Connector
         /// <summary>
         /// Initializes a new instance of the Activity class.
         /// </summary>
-        public Activity(string type = default(string), string id = default(string), DateTime? timestamp = default(DateTime?), DateTime? localTimestamp = default(DateTime?), string serviceUrl = default(string), string channelId = default(string), ChannelAccount from = default(ChannelAccount), ConversationAccount conversation = default(ConversationAccount), ChannelAccount recipient = default(ChannelAccount), string textFormat = default(string), string attachmentLayout = default(string), IList<ChannelAccount> membersAdded = default(IList<ChannelAccount>), IList<ChannelAccount> membersRemoved = default(IList<ChannelAccount>), string topicName = default(string), bool? historyDisclosed = default(bool?), string locale = default(string), string text = default(string), string summary = default(string), IList<Attachment> attachments = default(IList<Attachment>), IList<Entity> entities = default(IList<Entity>), object channelData = default(object), string action = default(string), string replyToId = default(string), object value = default(object), string name = default(string), ConversationReference relatesTo = default(ConversationReference))
+        public Activity(string type = default(string), string id = default(string), DateTime? timestamp = default(DateTime?), DateTime? localTimestamp = default(DateTime?), string serviceUrl = default(string), string channelId = default(string), ChannelAccount from = default(ChannelAccount), ConversationAccount conversation = default(ConversationAccount), ChannelAccount recipient = default(ChannelAccount), string textFormat = default(string), string attachmentLayout = default(string), IList<ChannelAccount> membersAdded = default(IList<ChannelAccount>), IList<ChannelAccount> membersRemoved = default(IList<ChannelAccount>), string topicName = default(string), bool? historyDisclosed = default(bool?), string locale = default(string), string text = default(string), string summary = default(string), IList<CardAction> suggestedActions = default(IList<CardAction>), IList<Attachment> attachments = default(IList<Attachment>), IList<Entity> entities = default(IList<Entity>), object channelData = default(object), string action = default(string), string replyToId = default(string), object value = default(object), string name = default(string), ConversationReference relatesTo = default(ConversationReference))
         {
             Type = type;
             Id = id;
@@ -45,6 +45,7 @@ namespace Microsoft.Bot.Connector
             Locale = locale;
             Text = text;
             Summary = summary;
+            SuggestedActions = suggestedActions;
             Attachments = attachments;
             Entities = entities;
             ChannelData = channelData;
@@ -166,6 +167,13 @@ namespace Microsoft.Bot.Connector
         /// </summary>
         [JsonProperty(PropertyName = "summary")]
         public string Summary { get; set; }
+
+        /// <summary>
+        /// SuggestedActions are used to provide keyboard/quickreply like
+        /// behavior in many clients
+        /// </summary>
+        [JsonProperty(PropertyName = "suggestedActions")]
+        public IList<CardAction> SuggestedActions { get; set; }
 
         /// <summary>
         /// Attachments

@@ -60,6 +60,8 @@ import * as Keyboard from './cards/Keyboard';
 import * as Middleware from './middleware/Middleware';
 import * as IntentRecognizerSet from './dialogs/IntentRecognizerSet';
 import * as RegExpRecognizer from './dialogs/RegExpRecognizer';
+import * as LocalizedRegExpRecognizer from './dialogs/LocalizedRegExpRecognizer';
+import * as RecognizerFilter from './dialogs/RecognizerFilter';
 import * as LuisRecognizer from './dialogs/LuisRecognizer';
 import * as IntentDialog from './dialogs/IntentDialog';
 
@@ -96,6 +98,8 @@ exports.IntentDialog = IntentDialog.IntentDialog;
 exports.RecognizeMode = IntentDialog.RecognizeMode;
 exports.LuisRecognizer = LuisRecognizer.LuisRecognizer;
 exports.RegExpRecognizer = RegExpRecognizer.RegExpRecognizer;
+exports.LocalizedRegExpRecognizer = LocalizedRegExpRecognizer.LocalizedRegExpRecognizer;
+exports.RecognizerFilter = RecognizerFilter.RecognizerFilter;
 exports.SimpleDialog = SimpleDialog.SimpleDialog;
 exports.EntityRecognizer = EntityRecognizer.EntityRecognizer;
 exports.Library = Library.Library;

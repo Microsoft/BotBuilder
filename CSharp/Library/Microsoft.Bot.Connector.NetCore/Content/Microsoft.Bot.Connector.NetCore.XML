@@ -226,7 +226,7 @@
             Initializes a new instance of the Activity class.
             </summary>
         </member>
-        <member name="M:Microsoft.Bot.Connector.Activity.#ctor(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,Microsoft.Bot.Connector.ChannelAccount,Microsoft.Bot.Connector.ConversationAccount,Microsoft.Bot.Connector.ChannelAccount,System.String,System.String,System.Collections.Generic.IList{Microsoft.Bot.Connector.ChannelAccount},System.Collections.Generic.IList{Microsoft.Bot.Connector.ChannelAccount},System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.Bot.Connector.Attachment},System.Collections.Generic.IList{Microsoft.Bot.Connector.Entity},System.Object,System.String,System.String,System.Object,System.String,Microsoft.Bot.Connector.ConversationReference)">
+        <member name="M:Microsoft.Bot.Connector.Activity.#ctor(System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,Microsoft.Bot.Connector.ChannelAccount,Microsoft.Bot.Connector.ConversationAccount,Microsoft.Bot.Connector.ChannelAccount,System.String,System.String,System.Collections.Generic.IList{Microsoft.Bot.Connector.ChannelAccount},System.Collections.Generic.IList{Microsoft.Bot.Connector.ChannelAccount},System.String,System.Nullable{System.Boolean},System.String,System.String,System.String,System.Collections.Generic.IList{Microsoft.Bot.Connector.CardAction},System.Collections.Generic.IList{Microsoft.Bot.Connector.Attachment},System.Collections.Generic.IList{Microsoft.Bot.Connector.Entity},System.Object,System.String,System.String,System.Object,System.String,Microsoft.Bot.Connector.ConversationReference)">
             <summary>
             Initializes a new instance of the Activity class.
             </summary>
@@ -323,6 +323,12 @@
         <member name="P:Microsoft.Bot.Connector.Activity.Summary">
             <summary>
             Text to display if the channel cannot render cards
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Connector.Activity.SuggestedActions">
+            <summary>
+            SuggestedActions are used to provide keyboard/quickreply like
+            behavior in many clients
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Connector.Activity.Attachments">
@@ -3412,6 +3418,11 @@
         <member name="P:Microsoft.Bot.Connector.IMessageActivity.Attachments">
             <summary>
             Attachments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Bot.Connector.IMessageActivity.SuggestedActions">
+            <summary>
+            SuggestedActions are used to express actions for interacting with a card like keyboards/quickReplies
             </summary>
         </member>
         <member name="P:Microsoft.Bot.Connector.IMessageActivity.Entities">
