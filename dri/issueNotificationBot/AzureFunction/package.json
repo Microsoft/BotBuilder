@@ -6,7 +6,7 @@
     "start:local": "node local.js"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "botframework-connector": "^4.10.0-preview-140956",
     "dotenv": "^8.2.0"
   },
