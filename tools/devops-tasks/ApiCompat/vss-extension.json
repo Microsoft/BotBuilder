@@ -1,0 +1,56 @@
+{
+    "manifestVersion": 1,
+    "id": "binaries-comparer",
+    "name": "Binaries Comparer",
+    "version": "0.2.2",
+    "publisher": "Microsoft",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Compares binaries to test incompatibilities",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "media/extension-icon.png"
+    },
+    "content": {
+        "details": {
+            "path": "readme.md"
+        }
+    },
+    "links": {
+        "repository": {
+            "uri": "https://github.com/microsoft/botframework-sdk/tree/main/tools/devops-tasks/ApiCompat"
+        },
+        "issues": {
+            "uri": "https://github.com/microsoft/botframework-sdk/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/microsoft/botframework-sdk/tree/main/tools/devops-tasks/ApiCompat"
+    },
+    "files": [
+        {
+            "path": "source"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "source"
+            }
+        }
+    ],
+    "galleryFlags": [
+        "Public"
+    ]
+}

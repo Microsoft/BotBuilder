@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.632739056 5.97044334 0 5.38180027 2.57961534 2.98522167 0 0.588643067 0.632739056 0 3.83814214 2.98522167"></polygon>
+        <polygon id="path-3" points="0.632739056 5.97044334 0 5.38180027 2.57961534 2.98522167 0 0.588643067 0.632739056 0 3.83814214 2.98522167"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy">
+            <rect id="Rectangle-path" fill="#000000" fill-rule="nonzero" x="0" y="0" width="32" height="32" rx="2"></rect>
+            <g id="Group-3">
+                <g id="icon2-copy"></g>
+            </g>
+            <g id="Group-2" transform="translate(2.000000, 3.000000)">
+                <text id="dotnet" font-family="SegoeUI-Semibold, Segoe UI" font-size="9.5" font-weight="500" letter-spacing="-0.021714285" fill="#FFFFFF">
+                    <tspan x="0" y="17">dotnet</tspan>
+                </text>
+                <g id="Group-488">
+                    <g id="Group-484">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-483"></g>
+                        <polygon id="Fill-482" fill="#000000" mask="url(#mask-2)" points="-2.13230119 8.10274453 5.97044334 8.10274453 5.97044334 -2.13230119 -2.13230119 -2.13230119"></polygon>
+                    </g>
+                    <g id="Group-487">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-486"></g>
+                        <polygon id="Fill-485" fill="#FFFFFF" mask="url(#mask-4)" points="-3.41168191 8.10274453 6.82336381 8.10274453 6.82336381 -2.13230119 -3.41168191 -2.13230119"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

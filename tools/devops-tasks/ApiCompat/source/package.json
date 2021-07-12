@@ -1,0 +1,25 @@
+{
+  "name": "source",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "prebuild": "npm run lint",
+    "build": "tsc --p tsconfig.json",
+    "lint": "eslint ./src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^2.7.7"
+  },
+  "devDependencies": {
+    "@types/node": "^11.9.4",
+    "@types/q": "^1.5.1",
+    "eslint": "^5.16.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "typescript": "^3.4.3"
+  }
+}

@@ -1,0 +1,111 @@
+{
+    "id": "497d08a2-f608-45a0-b442-93d150ee8261",
+    "name": "binaries-comparer",
+    "friendlyName": "Binaries Comparer",
+    "description": "Binaries Comparer",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Microsoft",
+    "version": {
+        "Major": 0,
+        "Minor": 2,
+        "Patch": 2
+    },
+    "instanceNameFormat": "Compare Binaries",
+    "inputs": [
+        {
+            "name": "contractsRootFolder",
+            "type": "filepath",
+            "label": "Contracts root folder",
+            "required": true,
+            "helpMarkDown": "Path to the folder that contains the input binaries"
+        },
+        {
+            "name": "contractsFileName",
+            "type": "text",
+            "label": "Contracts files name",
+            "required": true,
+            "helpMarkDown": "List of the names of the binaries to compare, separated by space"
+        },
+        {
+            "name": "implFolder",
+            "type": "filepath",
+            "label": "Implementation assemblies folder",
+            "required": true,
+            "helpMarkDown": "Sub directory inside the package folder where the binary can be found"
+        },
+        {
+            "name": "failOnIssue",
+            "type": "boolean",
+            "label": "Fails on Issues",
+            "required": true,
+            "helpMarkDown": "If issues are found when comparing, the task will fail"
+        },
+        {
+            "name": "resolveFx",
+            "type": "boolean",
+            "label": "Resolve Fx",
+            "required": true,
+            "helpMarkDown": "If a contract or implementation dependency cannot be found in the given directories, fallback to try to resolve against the framework directory on the machine"
+        },
+        {
+            "name": "warnOnIncorrectVersion",
+            "type": "boolean",
+            "label": "Warn on incorrect version",
+            "required": true,
+            "defaultValue": false,
+            "helpMarkDown": "Warn if the contract version number doesn't match the found implementation version number"
+        },
+        {
+            "name": "warnOnMissingAssemblies",
+            "type": "boolean",
+            "label": "Warn on missing assemblies",
+            "required": true,
+            "defaultValue": false,
+            "helpMarkDown": "Warn if the contract assembly cannot be found in the implementation directories. Default is to error and not do anlysis"
+        },
+        {
+            "name": "generateLog",
+            "type": "boolean",
+            "label": "Create Comparison result log",
+            "required": true,
+            "helpMarkDown": "If selected, a log will be created with the result of the comparisson"
+        },
+        {
+            "name": "outputFilename",
+            "type": "text",
+            "label": "Output file name",
+            "required": true,
+            "helpMarkDown": "Path to the folder that will contain the output files",
+            "visibleRule": "generateLog = TRUE"
+        },
+        {
+            "name": "outputFolder",
+            "type": "filepath",
+            "label": "Output file path",
+            "required": true,
+            "helpMarkDown": "Path to the folder that will contain the output files",
+            "visibleRule": "generateLog = TRUE"
+        },
+        {
+            "name": "useBaseline",
+            "type": "boolean",
+            "label": "Use baseline file",
+            "required": true,
+            "helpMarkDown": "Allows the use of a file with known differences to ignore when comparing"
+        },
+        {
+            "name": "baselineFile",
+            "type": "filepath",
+            "label": "Baseline file path",
+            "required": true,
+            "helpMarkDown": "Path to the baseline file",
+            "visibleRule": "useBaseline = TRUE"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "./lib/index.js"
+        }
+    }
+}
