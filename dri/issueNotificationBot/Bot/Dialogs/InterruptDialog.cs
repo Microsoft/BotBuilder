@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace IssueNotificationBot
 {
-    public class LogoutDialog : ComponentDialog
+    // This is more or less a root dialog so we can handle interruptions.
+    public class InterruptDialog : ComponentDialog
     {
         private readonly ILogger Logger;
-        public LogoutDialog(string id, string connectionName, ILogger<LogoutDialog> logger)
+
+        public InterruptDialog(string id, string connectionName, ILogger<InterruptDialog> logger)
             : base(id)
         {
             ConnectionName = connectionName;
@@ -40,13 +42,16 @@ namespace IssueNotificationBot
             {
                 var text = innerDc.Context.Activity.Text?.ToLowerInvariant();
 
+                // Currently, this dialog only handles the "logout" command. Update with a switch statement if more interruptions are needed.
                 if (text == "logout")
                 {
-                    // The bot adapter encapsulates the authentication processes.
                     var botAdapter = (BotFrameworkAdapter)innerDc.Context.Adapter;
+
                     await botAdapter.SignOutUserAsync(innerDc.Context, ConnectionName, null, cancellationToken);
+
                     await innerDc.Context.SendActivityAsync(MessageFactory.Text("You have been signed out."), cancellationToken);
                     Logger.LogInformation($"{innerDc.Context.Activity.From.Name} has logged out");
+
                     return await innerDc.CancelAllDialogsAsync(cancellationToken);
                 }
             }

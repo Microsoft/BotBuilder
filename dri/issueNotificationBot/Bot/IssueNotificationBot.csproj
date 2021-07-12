@@ -6,11 +6,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>RCS1090</NoWarn>
+    <NoWarn>NU1701, RCS1090, CA1031</NoWarn>
+    <WarningsAsErrors>NU1605</WarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>RCS1090</NoWarn>
+    <NoWarn>NU1701, RCS1090, CA1031</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,14 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdaptiveCards" Version="1.2.4" />
-    <PackageReference Include="AdaptiveCards.Templating" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Bot.Builder.ApplicationInsights" Version="4.9.3" />
-    <PackageReference Include="Microsoft.Bot.Builder.Azure" Version="4.9.3" />
-    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.9.3" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.ApplicationInsights.Core" Version="4.9.3" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.9.3" />
+    <PackageReference Include="AdaptiveCards" Version="2.1.0" />
+    <PackageReference Include="AdaptiveCards.Templating" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Bot.Builder.ApplicationInsights" Version="4.10.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Azure" Version="4.10.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.10.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.ApplicationInsights.Core" Version="4.10.2" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.10.2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,53 +4,54 @@
 using Newtonsoft.Json;
 using System;
 
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+
+#nullable enable
+
 namespace IssueNotificationBot.Models
 {
-    public class GitHubServiceData
+    // Model for issues submitted to the bot on `api/issues` from the Azure Function.
+    public class GitHubIssues
     {
         [JsonProperty(PropertyName = "reportedNotReplied")]
-        public readonly GitHubIssueNode[] ReportedNotReplied;
-        [JsonProperty(PropertyName = "reportedAndReplied")]
-        public readonly GitHubIssueNode[] ReportedAndReplied;
-        [JsonProperty(PropertyName = "reportedNotRepliedNoAssignee")]
-        public readonly GitHubIssueNode[] ReportedNotRepliedNoAssignee;
-        [JsonProperty(PropertyName = "reportedAndRepliedNoAssignee")]
-        public readonly GitHubIssueNode[] ReportedAndRepliedNoAssignee;
-    }
+        public readonly GitHubIssue[] ReportedNotReplied;
 
-    public class GitHubIssueNode
-    {
-        [JsonProperty(PropertyName = "node")]
-        private readonly GitHubIssue Node;
-        public int Number { get { return Node.Number; } }
-        public GitHubRepository Repository { get { return Node.Repository; } }
-        public string Title { get { return Node.Title; } }
-        public GitHubLabel[] Labels { get { return Node.Labels.Nodes; } }
-        public GitHubAssignee[] Assignees { get { return Node.Assignees.Nodes; } }
-        public GitHubAuthor Author { get { return Node.Author; } }
-        public string Body { get { return Node.Body; } }
-        public DateTime CreatedAt { get { return Node.CreatedAt; } }
-        public Uri Url { get { return Node.Url; } }
+        [JsonProperty(PropertyName = "reportedAndReplied")]
+        public readonly GitHubIssue[] ReportedAndReplied;
+
+        [JsonProperty(PropertyName = "reportedNotRepliedNoAssignee")]
+        public readonly GitHubIssue[] ReportedNotRepliedNoAssignee;
+
+        [JsonProperty(PropertyName = "reportedAndRepliedNoAssignee")]
+        public readonly GitHubIssue[] ReportedAndRepliedNoAssignee;
     }
 
     public class GitHubIssue
     {
         [JsonProperty(PropertyName = "number")]
         public readonly int Number;
+
         [JsonProperty(PropertyName = "repository")]
         public readonly GitHubRepository Repository;
+
         [JsonProperty(PropertyName = "title")]
         public readonly string Title;
+
         [JsonProperty(PropertyName = "labels")]
-        public readonly GitHubLabelsNodes Labels;
+        public readonly GitHubLabel[] Labels;
+
         [JsonProperty(PropertyName = "assignees")]
-        public readonly GitHubAssigneesNodes Assignees;
+        public readonly GitHubBasicUserInfo[] Assignees;
+
         [JsonProperty(PropertyName = "author")]
-        public readonly GitHubAuthor Author;
+        public readonly GitHubBasicUserInfo Author;
+
         [JsonProperty(PropertyName = "body")]
         public readonly string Body;
+
         [JsonProperty(PropertyName = "createdAt")]
         public readonly DateTime CreatedAt;
+
         [JsonProperty(PropertyName = "url")]
         public readonly Uri Url;
     }
@@ -59,46 +60,31 @@ namespace IssueNotificationBot.Models
     {
         [JsonProperty(PropertyName = "name")]
         public readonly string Name;
+
         [JsonProperty(PropertyName = "url")]
         public readonly Uri Url;
-    }
-
-    public class GitHubLabelsNodes
-    {
-        [JsonProperty(PropertyName = "nodes")]
-        public readonly GitHubLabel[] Nodes;
     }
 
     public class GitHubLabel
     {
         [JsonProperty(PropertyName = "name")]
         public readonly string Name;
+
         [JsonProperty(PropertyName = "updatedAt")]
         public readonly DateTime UpdatedAt;
+
         [JsonProperty(PropertyName = "url")]
         public readonly Uri Url;
     }
 
-    public class GitHubAssigneesNodes
-    {
-        [JsonProperty(PropertyName = "nodes")]
-        public readonly GitHubAssignee[] Nodes;
-    }
-
-    public class GitHubAssignee
+    public class GitHubBasicUserInfo
     {
         [JsonProperty(PropertyName = "login")]
         public readonly string Login;
+
         [JsonProperty(PropertyName = "name")]
-        public readonly string Name;
-        [JsonProperty(PropertyName = "url")]
-        public readonly Uri Url;
-    }
+        public readonly string? Name;
 
-    public class GitHubAuthor
-    {
-        [JsonProperty(PropertyName = "login")]
-        public readonly string Login;
         [JsonProperty(PropertyName = "url")]
         public readonly Uri Url;
     }

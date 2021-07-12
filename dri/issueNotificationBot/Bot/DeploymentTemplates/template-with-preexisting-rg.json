@@ -1,154 +1,154 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "appId": {
-            "type": "string",
-            "metadata": {
-                "description": "Active Directory App ID, set as MicrosoftAppId in the Web App's Application Settings."
-            }
-        },
-        "appSecret": {
-            "type": "string",
-            "metadata": {
-                "description": "Active Directory App Password, set as MicrosoftAppPassword in the Web App's Application Settings. Defaults to \"\"."
-            }
-        },
-        "botId": {
-            "type": "string",
-            "metadata": {
-                "description": "The globally unique and immutable bot ID. Also used to configure the displayName of the bot, which is mutable."
-            }
-        },
-        "botSku": {
-            "defaultValue": "F0",
-            "type": "string",
-            "metadata": {
-                "description": "The pricing tier of the Bot Service Registration. Acceptable values are F0 and S1."
-            }
-        },
-        "newAppServicePlanName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The name of the new App Service Plan."
-            }
-        },
-        "newAppServicePlanSku": {
-            "type": "object",
-            "defaultValue": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
-                "capacity": 1
-            },
-            "metadata": {
-                "description": "The SKU of the App Service Plan. Defaults to Standard values."
-            }
-        },
-        "appServicePlanLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "The location of the App Service Plan."
-            }
-        },
-        "existingAppServicePlan": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Name of the existing App Service Plan used to create the Web App for the bot."
-            }
-        },
-        "newWebAppName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The globally unique name of the Web App. Defaults to the value passed in for \"botId\"."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appId": {
+      "type": "string",
+      "metadata": {
+        "description": "Active Directory App ID, set as MicrosoftAppId in the Web App's Application Settings."
+      }
     },
-    "variables": {
-        "defaultAppServicePlanName": "[if(empty(parameters('existingAppServicePlan')), 'createNewAppServicePlan', parameters('existingAppServicePlan'))]",
-        "useExistingAppServicePlan": "[not(equals(variables('defaultAppServicePlanName'), 'createNewAppServicePlan'))]",
-        "servicePlanName": "[if(variables('useExistingAppServicePlan'), parameters('existingAppServicePlan'), parameters('newAppServicePlanName'))]",
-        "resourcesLocation": "[parameters('appServicePlanLocation')]",
-        "webAppName": "[if(empty(parameters('newWebAppName')), parameters('botId'), parameters('newWebAppName'))]",
-        "siteHost": "[concat(variables('webAppName'), '.azurewebsites.net')]",
-        "botEndpoint": "[concat('https://', variables('siteHost'), '/api/messages')]"
+    "appSecret": {
+      "type": "string",
+      "metadata": {
+        "description": "Active Directory App Password, set as MicrosoftAppPassword in the Web App's Application Settings. Defaults to \"\"."
+      }
     },
-    "resources": [
-        {
-            "comments": "Create a new App Service Plan if no existing App Service Plan name was passed in.",
-            "type": "Microsoft.Web/serverfarms",
-            "condition": "[not(variables('useExistingAppServicePlan'))]",
-            "name": "[variables('servicePlanName')]",
-            "apiVersion": "2018-02-01",
-            "location": "[variables('resourcesLocation')]",
-            "sku": "[parameters('newAppServicePlanSku')]",
-            "properties": {
-                "name": "[variables('servicePlanName')]"
-            }
-        },
-        {
-            "comments": "Create a Web App using an App Service Plan",
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2015-08-01",
-            "location": "[variables('resourcesLocation')]",
-            "kind": "app",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms/', variables('servicePlanName'))]"
-            ],
-            "name": "[variables('webAppName')]",
-            "properties": {
-                "name": "[variables('webAppName')]",
-                "serverFarmId": "[variables('servicePlanName')]",
-                "siteConfig": {
-                    "appSettings": [
-                        {
-                            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-                            "value": "10.14.1"
-                        },
-                        {
-                            "name": "MicrosoftAppId",
-                            "value": "[parameters('appId')]"
-                        },
-                        {
-                            "name": "MicrosoftAppPassword",
-                            "value": "[parameters('appSecret')]"
-                        }
-                    ],
-                    "cors": {
-                        "allowedOrigins": [
-                            "https://botservice.hosting.portal.azure.net",
-                            "https://hosting.onecloud.azure-test.net/"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "apiVersion": "2017-12-01",
-            "type": "Microsoft.BotService/botServices",
-            "name": "[parameters('botId')]",
-            "location": "global",
-            "kind": "bot",
-            "sku": {
-                "name": "[parameters('botSku')]"
+    "botId": {
+      "type": "string",
+      "metadata": {
+        "description": "The globally unique and immutable bot ID. Also used to configure the displayName of the bot, which is mutable."
+      }
+    },
+    "botSku": {
+      "defaultValue": "F0",
+      "type": "string",
+      "metadata": {
+        "description": "The pricing tier of the Bot Service Registration. Acceptable values are F0 and S1."
+      }
+    },
+    "newAppServicePlanName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The name of the new App Service Plan."
+      }
+    },
+    "newAppServicePlanSku": {
+      "type": "object",
+      "defaultValue": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
+      },
+      "metadata": {
+        "description": "The SKU of the App Service Plan. Defaults to Standard values."
+      }
+    },
+    "appServicePlanLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of the App Service Plan."
+      }
+    },
+    "existingAppServicePlan": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Name of the existing App Service Plan used to create the Web App for the bot."
+      }
+    },
+    "newWebAppName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The globally unique name of the Web App. Defaults to the value passed in for \"botId\"."
+      }
+    }
+  },
+  "variables": {
+    "defaultAppServicePlanName": "[if(empty(parameters('existingAppServicePlan')), 'createNewAppServicePlan', parameters('existingAppServicePlan'))]",
+    "useExistingAppServicePlan": "[not(equals(variables('defaultAppServicePlanName'), 'createNewAppServicePlan'))]",
+    "servicePlanName": "[if(variables('useExistingAppServicePlan'), parameters('existingAppServicePlan'), parameters('newAppServicePlanName'))]",
+    "resourcesLocation": "[parameters('appServicePlanLocation')]",
+    "webAppName": "[if(empty(parameters('newWebAppName')), parameters('botId'), parameters('newWebAppName'))]",
+    "siteHost": "[concat(variables('webAppName'), '.azurewebsites.net')]",
+    "botEndpoint": "[concat('https://', variables('siteHost'), '/api/messages')]"
+  },
+  "resources": [
+    {
+      "comments": "Create a new App Service Plan if no existing App Service Plan name was passed in.",
+      "type": "Microsoft.Web/serverfarms",
+      "condition": "[not(variables('useExistingAppServicePlan'))]",
+      "name": "[variables('servicePlanName')]",
+      "apiVersion": "2018-02-01",
+      "location": "[variables('resourcesLocation')]",
+      "sku": "[parameters('newAppServicePlanSku')]",
+      "properties": {
+        "name": "[variables('servicePlanName')]"
+      }
+    },
+    {
+      "comments": "Create a Web App using an App Service Plan",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "location": "[variables('resourcesLocation')]",
+      "kind": "app",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms/', variables('servicePlanName'))]"
+      ],
+      "name": "[variables('webAppName')]",
+      "properties": {
+        "name": "[variables('webAppName')]",
+        "serverFarmId": "[variables('servicePlanName')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "10.14.1"
             },
-            "properties": {
-                "name": "[parameters('botId')]",
-                "displayName": "[parameters('botId')]",
-                "endpoint": "[variables('botEndpoint')]",
-                "msaAppId": "[parameters('appId')]",
-                "developerAppInsightsApplicationId": null,
-                "developerAppInsightKey": null,
-                "publishingCredentials": null,
-                "storageResourceId": null
+            {
+              "name": "MicrosoftAppId",
+              "value": "[parameters('appId')]"
             },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites/', variables('webAppName'))]"
+            {
+              "name": "MicrosoftAppPassword",
+              "value": "[parameters('appSecret')]"
+            }
+          ],
+          "cors": {
+            "allowedOrigins": [
+              "https://botservice.hosting.portal.azure.net",
+              "https://hosting.onecloud.azure-test.net/"
             ]
+          }
         }
-    ]
+      }
+    },
+    {
+      "apiVersion": "2017-12-01",
+      "type": "Microsoft.BotService/botServices",
+      "name": "[parameters('botId')]",
+      "location": "global",
+      "kind": "bot",
+      "sku": {
+        "name": "[parameters('botSku')]"
+      },
+      "properties": {
+        "name": "[parameters('botId')]",
+        "displayName": "[parameters('botId')]",
+        "endpoint": "[variables('botEndpoint')]",
+        "msaAppId": "[parameters('appId')]",
+        "developerAppInsightsApplicationId": null,
+        "developerAppInsightKey": null,
+        "publishingCredentials": null,
+        "storageResourceId": null
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites/', variables('webAppName'))]"
+      ]
+    }
+  ]
 }

@@ -1,67 +1,67 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.7",
-  "version": "1.0.0",
-  "id": "<AppId>",
-  "packageName": "com.notification.bot",
-  "localizationInfo": {
-    "defaultLanguageTag": "en-us",
-    "additionalLanguages": [
-    ]
-  },
-  "developer": {
-    "name": "Michael Richardson",
-    "websiteUrl": "https://dev.botframework.com/",
-    "privacyUrl": "https://aka.ms/bf-privacy",
-    "termsOfUseUrl": "https://aka.ms/bf-terms",
-    "mpnId": "1234567890"
-  },
-  "name": {
-    "short": "Notification Bot",
-    "full": "GitHub Issue Notification Bot"
-  },
-  "description": {
-    "short": "GitHub Issue Notification Bot",
-    "full": "GitHub Issue Notification Bot"
-  },
-  "icons": {
-    "outline": "outline.png",
-    "color": "color.png"
-  },
-  "accentColor": "#fc4103",
-  "configurableTabs": [
-  ],
-  "staticTabs": [
-  ],
-  "bots": [
-    {
-      "botId": "<AppId>",
-      "scopes": [
-        "team",
-        "personal",
-        "groupchat"
-      ],
-      "needsChannelSelector": false,
-      "isNotificationOnly": false,
-      "supportsFiles": false,
-      "commandLists": [
-      ]
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.7",
+    "version": "1.0.0",
+    "id": "<AppId>",
+    "packageName": "com.notification.bot",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": [
+        ]
+    },
+    "developer": {
+        "name": "Michael Richardson",
+        "websiteUrl": "https://dev.botframework.com/",
+        "privacyUrl": "https://aka.ms/bf-privacy",
+        "termsOfUseUrl": "https://aka.ms/bf-terms",
+        "mpnId": "1234567890"
+    },
+    "name": {
+        "short": "Notification Bot",
+        "full": "GitHub Issue Notification Bot"
+    },
+    "description": {
+        "short": "GitHub Issue Notification Bot",
+        "full": "GitHub Issue Notification Bot"
+    },
+    "icons": {
+        "outline": "outline.png",
+        "color": "color.png"
+    },
+    "accentColor": "#fc4103",
+    "configurableTabs": [
+    ],
+    "staticTabs": [
+    ],
+    "bots": [
+        {
+            "botId": "<AppId>",
+            "scopes": [
+                "team",
+                "personal",
+                "groupchat"
+            ],
+            "needsChannelSelector": false,
+            "isNotificationOnly": false,
+            "supportsFiles": false,
+            "commandLists": [
+            ]
+        }
+    ],
+    "connectors": [
+    ],
+    "composeExtensions": [
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "devicePermissions": [
+    ],
+    "validDomains": [
+        "token.botframework.com"
+    ],
+    "showLoadingIndicator": false,
+    "activities": {
     }
-  ],
-  "connectors": [
-  ],
-  "composeExtensions": [
-  ],
-  "permissions": [
-    "identity",
-    "messageTeamMembers"
-  ],
-  "devicePermissions": [
-  ],
-  "validDomains": [
-    "token.botframework.com"
-  ],
-  "showLoadingIndicator": false,
-  "activities": {
-  }
 }

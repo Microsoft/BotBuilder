@@ -13,6 +13,7 @@ namespace IssueNotificationBot.Services
     {
         private readonly string _token;
         private readonly HttpClient _client;
+
         public GitHubClient(string token)
         {
             _token = token;
@@ -21,6 +22,9 @@ namespace IssueNotificationBot.Services
             _client.DefaultRequestHeaders.UserAgent.TryParseAdd(Constants.UserAgent);
         }
 
+        /// <summary>
+        /// Get GitHub user info for the user that has authenticated with the bot via OAuth.
+        /// </summary>
         public async Task<GitHubUserResponse> GetAuthenticatedUser()
         {
             return await GetJsonResponseAsObject<GitHubUserResponse>(Constants.GitHubApiAuthenticatedUserPath).ConfigureAwait(false);

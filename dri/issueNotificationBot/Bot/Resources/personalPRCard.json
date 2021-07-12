@@ -1,0 +1,579 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Your PRs",
+            "size": "ExtraLarge",
+            "weight": "Bolder",
+            "spacing": "ExtraLarge",
+            "separator": true,
+            "fontType": "Default",
+            "isSubtle": true
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Singled-Out",
+                    "size": "ExtraLarge",
+                    "weight": "Bolder",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "PRs where you were specifically requested to review.",
+                    "wrap": true,
+                    "size": "Small"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "You have 0 Singled-Out PRs waiting for your review.",
+                    "$when": "${count(singlePRs) == 0}",
+                    "color": "Good"
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 55,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Title",
+                                            "weight": "Bolder",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 15,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Repo",
+                                            "weight": "Bolder",
+                                            "color": "Accent",
+                                            "isSubtle": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 20,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Created",
+                                            "weight": "Bolder",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": 55,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 15,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${repository}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${repository}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 20,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "selectAction": {
+                                        "type": "Action.OpenUrl",
+                                        "url": "${url}"
+                                    },
+                                    "$data": "${if(count(singlePRs) > 0, subArray(singlePRs, 0, min(5, count(singlePRs))), [])}"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": 55,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 15,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${repository}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${repository}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 20,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "selectAction": {
+                                        "type": "Action.OpenUrl",
+                                        "url": "${url}"
+                                    },
+                                    "$data": "${if(count(singlePRs) > 5, subArray(skip(singlePRs, 5), 0, min(count(singlePRs) - 5, 5)), [])}"
+                                }
+                            ],
+                            "id": "moreSinglePRs",
+                            "isVisible": false
+                        },
+                        {
+                            "type": "ActionSet",
+                            "id": "showMoreSingle",
+                            "$when": "${count(singlePRs) > 5}",
+                            "actions": [
+                                {
+                                    "type": "Action.ToggleVisibility",
+                                    "title": "Show More",
+                                    "targetElements": [
+                                        "moreSinglePRs",
+                                        "showMoreSingle",
+                                        "showLessSingle"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "id": "showLessSingle",
+                            "isVisible": false,
+                            "items": [
+                                {
+                                    "type": "ActionSet",
+                                    "actions": [
+                                        {
+                                            "type": "Action.ToggleVisibility",
+                                            "title": "Show Less",
+                                            "targetElements": [
+                                                "moreSinglePRs",
+                                                "showMoreSingle",
+                                                "showLessSingle"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Note: You have more than 10 PRs in this category, but this list is limited to 10 due to Teams message size limitations.",
+                                    "color": "Warning",
+                                    "isSubtle": true,
+                                    "weight": "Lighter",
+                                    "wrap": true,
+                                    "$when": "${count(singlePRs) > 10}"
+                                }
+                            ]
+                        }
+                    ],
+                    "$when": "${count(singlePRs) > 0}"
+                }
+            ],
+            "separator": true,
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "Group",
+                    "size": "ExtraLarge",
+                    "weight": "Bolder",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "PRs for a review group in which you are a member was requested to review.",
+                    "wrap": true,
+                    "size": "Small"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "You have 0 Group PRs waiting for your review.",
+                    "$when": "${count(groupPRs) == 0}",
+                    "color": "Good"
+                },
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "width": 55,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Title",
+                                            "weight": "Bolder",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 15,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Group",
+                                            "weight": "Bolder",
+                                            "color": "Accent",
+                                            "isSubtle": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "width": 20,
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "text": "Created",
+                                            "weight": "Bolder",
+                                            "color": "Accent"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": 55,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 15,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${group}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${group}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 20,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "selectAction": {
+                                        "type": "Action.OpenUrl",
+                                        "url": "${url}"
+                                    },
+                                    "$data": "${if(count(groupPRs) > 0, subArray(groupPRs, 0, min(5, count(groupPRs))), [])}"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "width": 55,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${title}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 15,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${group}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${group}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "width": 20,
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${!highlight}"
+                                                },
+                                                {
+                                                    "type": "TextBlock",
+                                                    "text": "${formatDateTime(createdAt, 'd MMM, yy')}",
+                                                    "$when": "${highlight}",
+                                                    "color": "Attention",
+                                                    "weight": "Bolder"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "selectAction": {
+                                        "type": "Action.OpenUrl",
+                                        "url": "${url}"
+                                    },
+                                    "$data": "${if(count(groupPRs) > 5, subArray(skip(groupPRs, 5), 0, min(count(groupPRs) - 5, 5)), [])}"
+                                }
+                            ],
+                            "id": "moreGroupPRs",
+                            "isVisible": false
+                        },
+                        {
+                            "type": "ActionSet",
+                            "id": "showMoreGroup",
+                            "$when": "${count(groupPRs) > 5}",
+                            "actions": [
+                                {
+                                    "type": "Action.ToggleVisibility",
+                                    "title": "Show More",
+                                    "targetElements": [
+                                        "moreGroupPRs",
+                                        "showMoreGroup",
+                                        "showLessGroup"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Container",
+                            "id": "showLessGroup",
+                            "isVisible": false,
+                            "items": [
+                                {
+                                    "type": "ActionSet",
+                                    "actions": [
+                                        {
+                                            "type": "Action.ToggleVisibility",
+                                            "title": "Show Less",
+                                            "targetElements": [
+                                                "moreGroupPRs",
+                                                "showMoreGroup",
+                                                "showLessGroup"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "text": "Note: You have more than 10 PRs in this category, but this list is limited to 10 due to Teams message size limitations.",
+                                    "color": "Warning",
+                                    "isSubtle": true,
+                                    "weight": "Lighter",
+                                    "wrap": true,
+                                    "$when": "${count(groupPRs) > 10}"
+                                }
+                            ]
+                        }
+                    ],
+                    "$when": "${count(groupPRs) > 0}"
+                }
+            ],
+            "separator": true,
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.OpenUrl",
+                    "title": "Show All PRs",
+                    "url": "${prQueryUrl}",
+                    "iconUrl": "https://camo.githubusercontent.com/6d3b6965b71ebb2f6ac981a061d70ace7cddd44f/68747470733a2f2f6769742d73636d2e636f6d2f696d616765732f6c6f676f732f646f776e6c6f6164732f4769742d49636f6e2d31373838432e706e67"
+                }
+            ],
+            "separator": true,
+            "spacing": "ExtraLarge"
+        },
+        {
+            "type": "RichTextBlock",
+            "inlines": [
+                {
+                    "type": "TextRun",
+                    "text": "Contact ",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "${maintainerName} ",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "(${maintainerEmail}) ",
+                    "color": "Attention",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "for help with this bot.",
+                    "size": "Small"
+                }
+            ],
+            "$when": "${maintainerName != null && maintainerEmail != null}",
+            "separator": true,
+            "spacing": "ExtraLarge"
+        }
+    ]
+}

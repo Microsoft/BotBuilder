@@ -29,6 +29,7 @@ namespace IssueNotificationBot
         }
 
         public IConfigurationRoot Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -61,11 +62,14 @@ namespace IssueNotificationBot
             // Create the Conversation state. (Used by the Dialog system itself.)
             services.AddSingleton<ConversationState>();
 
-            // The Dialog that will be run by the bot.
+            // The Dialog that will be run by the bot for users.
             services.AddSingleton<SignInDialog>();
 
+            // The Dialog that will be run by the bot for the maintainer.
+            services.AddSingleton<MaintainerDialog>();
+
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, IssueNotificationBot<SignInDialog>>();
+            services.AddTransient<IBot, TeamsActivityBot<SignInDialog, MaintainerDialog>>();
 
             // Cosmos Storage
             var storage = new CosmosDbPartitionedStorage(
@@ -80,12 +84,17 @@ namespace IssueNotificationBot
             services.AddSingleton<IStorage>(storage);
             services.AddSingleton<UserStorage>();
 
-            services.AddSingleton<GitHubDataProcessor>();
+            services.AddSingleton<GitHubIssueProcessor>();
+            services.AddSingleton<GitHubPRProcessor>();
             services.AddSingleton<NotificationHelper>();
+            services.AddSingleton<MessageBroadcaster>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+#pragma warning disable CA1822 // Mark members as static
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+#pragma warning restore CA1822 // Mark members as static
         {
             if (env.IsDevelopment())
             {

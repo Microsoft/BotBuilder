@@ -1,84 +1,84 @@
 {
-  "type": "AdaptiveCard",
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.2",
-  "body": [
-    {
-      "type": "ColumnSet",
-      "columns": [
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
         {
-          "type": "Column",
-          "width": 20,
-          "items": [
-            {
-              "type": "Image",
-              "url": "${avatar_url}",
-              "size": "medium"
-            }
-          ]
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 20,
+                    "items": [
+                        {
+                            "type": "Image",
+                            "url": "${avatar_url}",
+                            "size": "medium"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": 80
+                }
+            ]
         },
         {
-          "type": "Column",
-          "width": 80
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "@${login}",
+                    "color": "Accent",
+                    "height": "stretch"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Hello, **${name}**!",
+            "size": "Large"
+        },
+        {
+            "type": "TextBlock",
+            "text": "I'm going to monitor the Bot Framework issues on GitHub assigned to you and send you notifications when your issues are close to expiring.",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Stay tuned!",
+            "size": "Large",
+            "weight": "Bolder",
+            "color": "Warning",
+            "spacing": "Small"
+        },
+        {
+            "type": "RichTextBlock",
+            "inlines": [
+                {
+                    "type": "TextRun",
+                    "text": "Contact ",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "${maintainerName} ",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "(${maintainerEmail}) ",
+                    "color": "Attention",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "for help with this bot.",
+                    "size": "Small"
+                }
+            ],
+            "$when": "${maintainerName != null && maintainerEmail != null}"
         }
-      ]
-    },
-    {
-      "type": "Container",
-      "items": [
-        {
-          "type": "TextBlock",
-          "text": "@${login}",
-          "color": "Accent",
-          "height": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "TextBlock",
-      "text": "Hello, **${name}**!",
-      "size": "Large"
-    },
-    {
-      "type": "TextBlock",
-      "text": "I'm going to monitor the Bot Framework issues on GitHub assigned to you and send you notifications when your issues are close to expiring.",
-      "wrap": true,
-      "spacing": "Medium"
-    },
-    {
-      "type": "TextBlock",
-      "text": "Stay tuned!",
-      "size": "Large",
-      "weight": "Bolder",
-      "color": "Warning",
-      "spacing": "Small"
-    },
-    {
-      "type": "RichTextBlock",
-      "inlines": [
-        {
-          "type": "TextRun",
-          "text": "Contact ",
-          "size": "Small"
-        },
-        {
-          "type": "TextRun",
-          "text": "${maintainerName} ",
-          "color": "Accent"
-        },
-        {
-          "type": "TextRun",
-          "text": "(${maintainerEmail}) ",
-          "color": "Attention",
-          "size": "Small"
-        },
-        {
-          "type": "TextRun",
-          "text": "for help with this bot.",
-          "size": "Small"
-        }
-      ],
-      "$when": "${maintainerName != null && maintainerEmail != null}"
-    }
-  ]
+    ]
 }

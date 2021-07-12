@@ -5,6 +5,7 @@
 #Secrets
 .env
 appsettings.json
+appsettings.Development.json
 
 # Azure Function
 node_modules
@@ -14,3 +15,4 @@ package-lock.json
 bin/
 obj/
 Properties/
+testBot/

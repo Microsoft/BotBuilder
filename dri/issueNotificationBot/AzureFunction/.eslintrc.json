@@ -1,0 +1,28 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2020": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 9,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "impliedStrict": true
+        }
+    },
+    "rules": {
+        "indent": ["error", "tab"],
+        "allowIndentationTabs": true,
+        "no-tabs": 0,
+        "semi": ["error", "always"],
+        "no-return-await": 0,
+        "space-before-function-paren": ["error", {
+            "named": "never",
+            "anonymous": "never",
+            "asyncArrow": "always"
+        }],
+        "quotes": ["error", "single", {"allowTemplateLiterals": true}],
+        "template-curly-spacing": ["error", "always"]
+    }
+}

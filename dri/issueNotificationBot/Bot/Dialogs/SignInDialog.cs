@@ -14,15 +14,18 @@ using System.Threading.Tasks;
 
 namespace IssueNotificationBot
 {
-    public class SignInDialog : LogoutDialog
+    // Dialog for getting user information via GitHub OAuth.
+    public class SignInDialog : InterruptDialog
     {
         protected readonly ILogger Logger;
+        protected readonly NotificationHelper NotificationHelper;
         protected readonly UserStorage UserStorage;
 
-        public SignInDialog(IConfiguration configuration, ILogger<SignInDialog> logger, UserStorage userStorage)
+        public SignInDialog(IConfiguration configuration, ILogger<SignInDialog> logger, NotificationHelper notificationHelper, UserStorage userStorage)
             : base(nameof(SignInDialog), configuration["ConnectionName"], logger)
         {
             Logger = logger;
+            NotificationHelper = notificationHelper;
             UserStorage = userStorage;
 
             AddDialog(new OAuthPrompt(
@@ -59,7 +62,7 @@ namespace IssueNotificationBot
             var tokenResponse = (TokenResponse)stepContext.Result;
             if (tokenResponse != null)
             {
-                Logger.LogInformation($"{stepContext.Context.Activity.From} has logged in");
+                Logger.LogInformation($"{stepContext.Context.Activity.From?.Name} has logged in");
 
                 // Get the user's GitHub information with their token
                 var client = new GitHubClient(tokenResponse.Token);
@@ -68,8 +71,7 @@ namespace IssueNotificationBot
                     ConversationReference = stepContext.Context.Activity.GetConversationReference()
                 };
 
-                var maintainer = await UserStorage.GetTrackedUserFromGitHubUserId(Constants.MaintainerGitHubId);
-                var card = TemplateCardHelper.GetUserWelcomeCard(user.GitHubDetails.Avatar_url, user.GitHubDetails.Login, user.GitHubDetails.Name, maintainer);
+                var card = TemplateCardHelper.GetUserWelcomeCard(user.GitHubDetails.Avatar_url, user.GitHubDetails.Login, user.GitHubDetails.Name, NotificationHelper.Maintainer);
 
                 await stepContext.Context.SendActivityAsync(MessageFactory.Attachment(card), cancellationToken);
 
@@ -90,7 +92,7 @@ namespace IssueNotificationBot
             else
             {
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text("Login was not successful please try again."), cancellationToken);
-                Logger.LogWarning($"Unsuccessful login for {stepContext.Context.Activity.From}");
+                Logger.LogWarning($"Unsuccessful login for {stepContext.Context.Activity.From?.Name}");
             }
 
             return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);

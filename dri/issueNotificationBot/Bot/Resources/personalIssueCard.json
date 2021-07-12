@@ -1,94 +1,93 @@
 ﻿{
-  "type": "AdaptiveCard",
-  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.2",
-  "body": [
-    {
-      "type": "TextBlock",
-      "text": "Issue ${nearingOrExpiredMessage} expiration!",
-      "size": "extraLarge",
-      "weight": "bolder",
-      "color": "attention"
-    },
-    {
-      "type": "FactSet",
-      "facts": [
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
         {
-          "title": "Title",
-          "value": "${issueTitle}"
+            "type": "TextBlock",
+            "text": "Issue ${nearingOrExpiredMessage} expiration!",
+            "size": "extraLarge",
+            "weight": "bolder",
+            "color": "attention"
         },
         {
-          "title": "Created",
-          "value": "${issueCreated} UTC"
+            "type": "FactSet",
+            "facts": [
+                {
+                    "title": "Title",
+                    "value": "${issueTitle}"
+                },
+                {
+                    "title": "Created",
+                    "value": "${issueCreated} UTC"
+                },
+                {
+                    "title": "Expires",
+                    "value": "${issueExpires} UTC"
+                }
+            ]
         },
         {
-          "title": "Expires",
-          "value": "${issueExpires} UTC"
+            "type": "TextBlock",
+            "text": "Summary",
+            "size": "Large",
+            "weight": "Bolder",
+            "color": "Accent"
+        },
+        {
+            "type": "TextBlock",
+            "text": "${body}",
+            "wrap": true,
+            "maxLines": 5,
+            "spacing": "Large",
+            "separator": true,
+            "size": "Small",
+            "weight": "Lighter"
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.OpenUrl",
+                    "title": "Open Issue to ${action}",
+                    "url": "${issueUrl}",
+                    "iconUrl": "https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png"
+                },
+                {
+                    "type": "Action.Submit",
+                    "title": "Hide Notification",
+                    "data": {
+                        "action": "hideIssueNotification"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "RichTextBlock",
+            "inlines": [
+                {
+                    "type": "TextRun",
+                    "text": "Contact ",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "${maintainerName} ",
+                    "color": "Accent"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "(${maintainerEmail}) ",
+                    "color": "Attention",
+                    "size": "Small"
+                },
+                {
+                    "type": "TextRun",
+                    "text": "for help with this bot.",
+                    "size": "Small"
+                }
+            ],
+            "$when": "${maintainerName != null && maintainerEmail != null}"
         }
-      ]
-    },
-    {
-      "type": "TextBlock",
-      "text": "Summary",
-      "size": "Large",
-      "weight": "Bolder",
-      "color": "Accent"
-    },
-    {
-      "type": "TextBlock",
-      "text": "${body}",
-      "wrap": true,
-      "maxLines": 5,
-      "spacing": "Large",
-      "separator": true,
-      "size": "Small",
-      "weight": "Lighter"
-    },
-    {
-      "type": "ActionSet",
-      "actions": [
-        {
-          "type": "Action.OpenUrl",
-          "title": "Open Issue to ${action}",
-          "url": "${issueUrl}",
-          "iconUrl": "https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png"
-        },
-        {
-          "type": "Action.Submit",
-          "title": "Hide Notification",
-          "data": {
-            "action": "hideIssueNotification",
-            "issueNumber": "${issueNumber}"
-          }
-        }
-      ]
-    },
-    {
-      "type": "RichTextBlock",
-      "inlines": [
-        {
-          "type": "TextRun",
-          "text": "Contact ",
-          "size": "Small"
-        },
-        {
-          "type": "TextRun",
-          "text": "${maintainerName} ",
-          "color": "Accent"
-        },
-        {
-          "type": "TextRun",
-          "text": "(${maintainerEmail}) ",
-          "color": "Attention",
-          "size": "Small"
-        },
-        {
-          "type": "TextRun",
-          "text": "for help with this bot.",
-          "size": "Small"
-        }
-      ],
-      "$when": "${maintainerName != null && maintainerEmail != null}"
-    }
-  ]
+    ]
 }
