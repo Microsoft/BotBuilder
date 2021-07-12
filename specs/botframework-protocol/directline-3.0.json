@@ -377,6 +377,7 @@
           "application/xml",
           "text/xml"
         ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "The conversation was successfully created, updated, or retrieved.",
@@ -473,9 +474,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "eTag": {
-          "type": "string"
         }
       }
     },
@@ -572,6 +570,10 @@
         },
         "localTimezone": {
           "description": "Contains the name of the local timezone of the message, expressed in IANA Time Zone database format.\r\nFor example, America/Los_Angeles.",
+          "type": "string"
+        },
+        "callerId": {
+          "description": "A string containing an IRI identifying the caller of a bot. This field is not intended to be transmitted\r\nover the wire, but is instead populated by bots and clients based on cryptographically verifiable data\r\nthat asserts the identity of the callers (e.g. tokens).",
           "type": "string"
         },
         "serviceUrl": {
@@ -742,6 +744,10 @@
         "semanticAction": {
           "$ref": "#/definitions/SemanticAction",
           "description": "An optional programmatic action accompanying this request"
+        },
+        "transcript": {
+          "$ref": "#/definitions/Transcript",
+          "description": "Transcript of the conversations for Handoff message"
         }
       }
     },
@@ -911,6 +917,19 @@
         }
       }
     },
+    "Transcript": {
+      "description": "Transcript",
+      "type": "object",
+      "properties": {
+        "activities": {
+          "description": "A collection of Activities that conforms to the Transcript schema.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Activity"
+          }
+        }
+      }
+    },
     "CardAction": {
       "description": "A clickable action",
       "type": "object",
@@ -925,6 +944,10 @@
         },
         "image": {
           "description": "Image URL which will appear on the button, next to text label",
+          "type": "string"
+        },
+        "imageAltText": {
+          "description": "Alternate text to be used for the Image property",
           "type": "string"
         },
         "text": {
@@ -1420,12 +1443,34 @@
           "description": "The name of the registered connection",
           "type": "string"
         },
+        "tokenExchangeResource": {
+          "$ref": "#/definitions/TokenExchangeResource",
+          "description": "The resource to try to perform token exchange with"
+        },
         "buttons": {
           "description": "Action to use to perform signin",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
           }
+        }
+      }
+    },
+    "TokenExchangeResource": {
+      "description": "Record for a token exchange request that is sent as part of an OAuthCard",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "A unique identifier for this token exchange instance",
+          "type": "string"
+        },
+        "uri": {
+          "description": "The application ID / resource identifier with which to exchange a token on behalf of",
+          "type": "string"
+        },
+        "providerId": {
+          "description": "The identifier of the provider with which to attempt a token exchange\r\nA value of null or empty will default to Azure Active Directory",
+          "type": "string"
         }
       }
     },
@@ -1647,6 +1692,34 @@
         },
         "expiration": {
           "description": "Expiration for the token, in ISO 8601 format (e.g. \"2007-04-05T14:30Z\")",
+          "type": "string"
+        }
+      }
+    },
+    "TokenExchangeInvokeRequest": {
+      "description": "A request to exchange a token",
+      "type": "object",
+      "properties": {
+        "connectionName": {
+          "description": "The connection name",
+          "type": "string"
+        },
+        "token": {
+          "description": "The user token that can be exchanged",
+          "type": "string"
+        }
+      }
+    },
+    "TokenExchangeInvokeResponse": {
+      "description": "The response object of a token exchange invoke",
+      "type": "object",
+      "properties": {
+        "connectionName": {
+          "description": "The connection name",
+          "type": "string"
+        },
+        "failureDetail": {
+          "description": "The details of why the token exchange failed",
           "type": "string"
         }
       }
