@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Botframework.LUParser", "Microsoft.Botframework.LUParser\Microsoft.Botframework.LUParser.csproj", "{A892D89A-F439-410B-BB90-323CA8521D4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Botframework.LUParser.Tests", "Microsoft.Botframework.LUParser.Tests\Microsoft.Botframework.LUParser.Tests.csproj", "{60B67EFB-C51E-4E43-AA73-21DB1CFE4A95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A892D89A-F439-410B-BB90-323CA8521D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A892D89A-F439-410B-BB90-323CA8521D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A892D89A-F439-410B-BB90-323CA8521D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A892D89A-F439-410B-BB90-323CA8521D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B67EFB-C51E-4E43-AA73-21DB1CFE4A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B67EFB-C51E-4E43-AA73-21DB1CFE4A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B67EFB-C51E-4E43-AA73-21DB1CFE4A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B67EFB-C51E-4E43-AA73-21DB1CFE4A95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6008C45-22CC-413D-8207-337BD0048552}
+	EndGlobalSection
+EndGlobal

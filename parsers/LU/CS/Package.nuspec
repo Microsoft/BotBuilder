@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.Bot.Framework.CSharp.Parser</id>
+    <version>1.0.0</version>
+    <description>A CSharp parser for Language Understanding files.</description>
+    <authors>Microsoft</authors>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <title>CSharp LU Parser</title>
+    <projectUrl>https://github.com/Microsoft/botframework-sdk</projectUrl>
+    <license type="file">LICENSE.txt</license>
+    <icon>nuget_icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+</package>

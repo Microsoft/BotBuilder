@@ -1,0 +1,1816 @@
+﻿{
+    "sections": [
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_Greeting",
+            "Body": "- hi\n- hello\n\n> ML ENTITY. Without an explicit entity definition, 'userName' defaults to 'ml' entity type.",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "hi",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- hi",
+                    "range": {
+                        "Start": {
+                            "Line": 4,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 4,
+                            "Character": 4
+                        }
+                    }
+                },
+                {
+                    "utterance": "hello",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- hello",
+                    "range": {
+                        "Start": {
+                            "Line": 5,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 5,
+                            "Character": 7
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+
+            ],
+            "Name": "Greeting",
+            "IntentNameLine": "# Greeting",
+            "Range": {
+                "Start": {
+                    "Line": 3,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 7,
+                    "Character": 92
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserName",
+            "Body": "- my name is {username=vishwac}\n\n> PREBUILT ENTITIES\n@ prebuilt number numOfGuests, age\n\n> COMPOSITE ENTITIES",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "my name is vishwac",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "username",
+                            "role": "",
+                            "startPos": 11,
+                            "endPos": 17
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- my name is {username=vishwac}",
+                    "range": {
+                        "Start": {
+                            "Line": 9,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 9,
+                            "Character": 31
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_number",
+                    "Body": "",
+                    "Name": "number",
+                    "Type": "prebuilt",
+                    "Roles": "numOfGuests, age",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 12,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 12,
+                            "Character": 35
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserName",
+            "IntentNameLine": "# getUserName",
+            "Range": {
+                "Start": {
+                    "Line": 8,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 14,
+                    "Character": 20
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_setThermostat",
+            "Body": "> This utterance labels ‘thermostat to 72’ as composite entity deviceTemperature\n    - Please set {deviceTemperature = thermostat to 72}\n> This is an example utterance that labels ‘owen’ as customDevice (ml entity) and wraps ‘owen to 72’ with the ‘deviceTemperature’ composite entity\n    - Set {deviceTemperature = {customDevice = owen} to 72}\n\n> Define a composite entity ‘deviceTemperature’ that has device (list entity), customDevice (ml entity), temperature (pre-built entity) as children\n\n@ composite deviceTemperature = [device, customDevice, temperature]\n\n@ list device =\n\t- thermostat :\n\t\t- Thermostat\n\t\t- Heater\n\t\t- AC\n\t\t- Air conditioner\n\t- refrigerator :\n\t\t- Fridge\n    \t- Cooler\n\n@ ml customDevice\n\n@ prebuilt temperature\n\n> REGULAR EXPRESSION ENTITY\n> from, to are roles to hrf-number.\n@ regex hrf-number from, to = /hrf-[0-9]{6}/\n\n> ROLES\n",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "Please set thermostat to 72",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "deviceTemperature",
+                            "role": "",
+                            "startPos": 11,
+                            "endPos": 26
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- Please set {deviceTemperature = thermostat to 72}",
+                    "range": {
+                        "Start": {
+                            "Line": 17,
+                            "Character": 4
+                        },
+                        "End": {
+                            "Line": 17,
+                            "Character": 55
+                        }
+                    }
+                },
+                {
+                    "utterance": "Set owen to 72",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "customDevice",
+                            "role": "",
+                            "startPos": 4,
+                            "endPos": 7
+                        },
+                        {
+                            "type": "entities",
+                            "entity": "deviceTemperature",
+                            "role": "",
+                            "startPos": 4,
+                            "endPos": 13
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "    - Set {deviceTemperature = {customDevice = owen} to 72}",
+                    "range": {
+                        "Start": {
+                            "Line": 19,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 19,
+                            "Character": 59
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_deviceTemperature",
+                    "Body": "",
+                    "Name": "deviceTemperature",
+                    "Type": "composite",
+                    "CompositeDefinition": "[device, customDevice, temperature]",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 23,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 23,
+                            "Character": 68
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_device",
+                    "Body": "",
+                    "Name": "device",
+                    "Type": "list",
+                    "SynonymsList": [
+                        {
+                            "NormalizedValue": "thermostat",
+                            "Synonyms": [
+                                "Thermostat",
+                                "Heater",
+                                "AC",
+                                "Air conditioner"
+                            ]
+                        },
+                        {
+                            "NormalizedValue": "refrigerator",
+                            "Synonyms": [
+                                "Fridge",
+                                "Cooler"
+                            ]
+                        }
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 25,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 33,
+                            "Character": 14
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_customDevice",
+                    "Body": "",
+                    "Name": "customDevice",
+                    "Type": "ml",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 35,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 35,
+                            "Character": 18
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_temperature",
+                    "Body": "",
+                    "Name": "temperature",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 37,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 37,
+                            "Character": 23
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_hrf-number",
+                    "Body": "",
+                    "Name": "hrf-number",
+                    "Type": "regex",
+                    "Roles": "from, to",
+                    "RegexDefinition": "/hrf-[0-9]{6}/",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 41,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 41,
+                            "Character": 45
+                        }
+                    }
+                }
+            ],
+            "Name": "setThermostat",
+            "IntentNameLine": "# setThermostat",
+            "Range": {
+                "Start": {
+                    "Line": 15,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 44,
+                    "Character": 0
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_AskForUserName",
+            "Body": "- {userName:firstName=vishwac} {userName:lastName=kannan}\n- I'm {userName:firstName=vishwac}\n- my first name is {userName:firstName=vishwac}\n- {userName=vishwac} is my name\n\n> In patterns, you can use roles using the {\\<entityName\\>:\\<roleName\\>} notation",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "vishwac kannan",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "userName",
+                            "role": "firstName",
+                            "startPos": 0,
+                            "endPos": 6
+                        },
+                        {
+                            "type": "entities",
+                            "entity": "userName",
+                            "role": "lastName",
+                            "startPos": 8,
+                            "endPos": 13
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- {userName:firstName=vishwac} {userName:lastName=kannan}",
+                    "range": {
+                        "Start": {
+                            "Line": 46,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 46,
+                            "Character": 57
+                        }
+                    }
+                },
+                {
+                    "utterance": "I'm vishwac",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "userName",
+                            "role": "firstName",
+                            "startPos": 4,
+                            "endPos": 10
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- I'm {userName:firstName=vishwac}",
+                    "range": {
+                        "Start": {
+                            "Line": 47,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 47,
+                            "Character": 34
+                        }
+                    }
+                },
+                {
+                    "utterance": "my first name is vishwac",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "userName",
+                            "role": "firstName",
+                            "startPos": 17,
+                            "endPos": 23
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- my first name is {userName:firstName=vishwac}",
+                    "range": {
+                        "Start": {
+                            "Line": 48,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 48,
+                            "Character": 47
+                        }
+                    }
+                },
+                {
+                    "utterance": "vishwac is my name",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "userName",
+                            "role": "",
+                            "startPos": 0,
+                            "endPos": 6
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- {userName=vishwac} is my name",
+                    "range": {
+                        "Start": {
+                            "Line": 49,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 49,
+                            "Character": 31
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+
+            ],
+            "Name": "AskForUserName",
+            "IntentNameLine": "# AskForUserName",
+            "Range": {
+                "Start": {
+                    "Line": 45,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 51,
+                    "Character": 81
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserNameRoles",
+            "Body": "- call me {name:userName}\n- I'm {name:userName}\n- my name is {name:userName}\n\n> roles can be specified for list entity types as well - in this case fromCity and toCity are added as roles to the 'city' list entity defined further below",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "call me {name:userName}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "name",
+                            "role": "userName"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- call me {name:userName}",
+                    "range": {
+                        "Start": {
+                            "Line": 53,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 53,
+                            "Character": 25
+                        }
+                    }
+                },
+                {
+                    "utterance": "I'm {name:userName}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "name",
+                            "role": "userName"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- I'm {name:userName}",
+                    "range": {
+                        "Start": {
+                            "Line": 54,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 54,
+                            "Character": 21
+                        }
+                    }
+                },
+                {
+                    "utterance": "my name is {name:userName}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "name",
+                            "role": "userName"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- my name is {name:userName}",
+                    "range": {
+                        "Start": {
+                            "Line": 55,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 55,
+                            "Character": 28
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+
+            ],
+            "Name": "getUserNameRoles",
+            "IntentNameLine": "# getUserNameRoles",
+            "Range": {
+                "Start": {
+                    "Line": 52,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 57,
+                    "Character": 156
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_BookFlight",
+            "Body": "- book flight from {city:fromCity} to {city:toCity}\n- [can you] get me a flight from {city:fromCity} to {city:toCity}\n- get me a flight to {city:toCity}\n- I need to fly from {city:fromCity}\n\n$city:Seattle=\n- Seattle\n- Tacoma\n- SeaTac\n- SEA\n\n$city:Portland=\n- Portland\n- PDX\n\n> PATTERNS",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "book flight from {city:fromCity} to {city:toCity}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "fromCity"
+                        },
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "toCity"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- book flight from {city:fromCity} to {city:toCity}",
+                    "range": {
+                        "Start": {
+                            "Line": 59,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 59,
+                            "Character": 51
+                        }
+                    }
+                },
+                {
+                    "utterance": "[can you] get me a flight from {city:fromCity} to {city:toCity}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "fromCity"
+                        },
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "toCity"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- [can you] get me a flight from {city:fromCity} to {city:toCity}",
+                    "range": {
+                        "Start": {
+                            "Line": 60,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 60,
+                            "Character": 65
+                        }
+                    }
+                },
+                {
+                    "utterance": "get me a flight to {city:toCity}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "toCity"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- get me a flight to {city:toCity}",
+                    "range": {
+                        "Start": {
+                            "Line": 61,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 61,
+                            "Character": 34
+                        }
+                    }
+                },
+                {
+                    "utterance": "I need to fly from {city:fromCity}",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "city",
+                            "role": "fromCity"
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- I need to fly from {city:fromCity}",
+                    "range": {
+                        "Start": {
+                            "Line": 62,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 62,
+                            "Character": 36
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "entitySection",
+                    "Id": "entitySection_city",
+                    "Body": "",
+                    "Name": "city",
+                    "Type": "Seattle=",
+                    "SynonymsOrPhraseList": [
+                        "Seattle",
+                        "Tacoma",
+                        "SeaTac",
+                        "SEA"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 64,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 68,
+                            "Character": 6
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "entitySection",
+                    "Id": "entitySection_city",
+                    "Body": "",
+                    "Name": "city",
+                    "Type": "Portland=",
+                    "SynonymsOrPhraseList": [
+                        "Portland",
+                        "PDX"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 70,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 72,
+                            "Character": 6
+                        }
+                    }
+                }
+            ],
+            "Name": "BookFlight",
+            "IntentNameLine": "# BookFlight",
+            "Range": {
+                "Start": {
+                    "Line": 58,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 74,
+                    "Character": 10
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_DeleteAlarm",
+            "Body": "- delete the {alarmTime} alarm\n\n> PHRASE LIST DEFINITION\n@ phraseList Want =\n    - require\n\t- need\n\t- desire\n\t- know\n\n@ phraselist question(interchangeable) =\n    - are you\n    - you are\n\n\n@ phraselist abc(interchangeable) =\n    - are you\n    - you are\n\n@ abc disabled\n\n> TIE FEATURES TO SPECIFIC MODEL",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "delete the {alarmTime} alarm",
+                    "entities": [
+                        {
+                            "type": "patternAnyEntities",
+                            "entity": "alarmTime",
+                            "role": ""
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- delete the {alarmTime} alarm",
+                    "range": {
+                        "Start": {
+                            "Line": 76,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 76,
+                            "Character": 30
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_Want",
+                    "Body": "",
+                    "Name": "Want",
+                    "Type": "phraseList",
+                    "ListBody": [
+                        "    - require",
+                        "\t- need",
+                        "\t- desire",
+                        "\t- know"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 79,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 83,
+                            "Character": 8
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_question(interchangeable)",
+                    "Body": "",
+                    "Name": "question(interchangeable)",
+                    "Type": "phraselist",
+                    "ListBody": [
+                        "    - are you",
+                        "    - you are"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 85,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 87,
+                            "Character": 14
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_abc(interchangeable)",
+                    "Body": "",
+                    "Name": "abc(interchangeable)",
+                    "Type": "phraselist",
+                    "ListBody": [
+                        "    - are you",
+                        "    - you are"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 90,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 92,
+                            "Character": 14
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_abc",
+                    "Body": "",
+                    "Name": "abc",
+                    "Roles": "disabled",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 94,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 94,
+                            "Character": 15
+                        }
+                    }
+                }
+            ],
+            "Name": "DeleteAlarm",
+            "IntentNameLine": "# DeleteAlarm",
+            "Range": {
+                "Start": {
+                    "Line": 75,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 96,
+                    "Character": 32
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserProfile",
+            "Body": "- my name is {@userName = vishwac}\n\n> phrase list definition\n@ phraselist PLCity(interchangeable) =\n    - seattle\n    - space needle\n    - SEATAC\n    - SEA\n> phrase list as feature to intent (also applicable to entities)\n@ intent getUserProfileIntent usesFeature PLCity\n\n> phrase list as a feature to an ml entity.\n@ ml myCity usesFeature PLCity\n\n@ regex regexZipcode = /[0-9]{5}/\n\n> phrase list as feature to n-depth entity with phrase list as a feature\n@ ml address2 fromAddress2, toAddress2\n@ address2 =\n    - @ number 'door number'\n    - @ ml streetName\n    - @ ml location\n        - @ ml city usesFeature PLCity\n        - @ regexZipcode zipcode \n\n\n> ADD ENTITY OR INTENT AS FEATURE\n> entity definition - @ <entityType> <entityName> [<roles>]\n\n@ prebuilt personName\n\n> entity definition with roles\n@ ml userN hasRoles fistN, lastN\n\n> add entity as a feature to another entity\n@ userN usesFeature personName\n\n> add entity as feature to an intent\n@ intent getUserNameIntent usesFeature personName\n\n> Intent definition",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "my name is vishwac",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "@userName",
+                            "role": "",
+                            "startPos": 11,
+                            "endPos": 17
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- my name is {@userName = vishwac}",
+                    "range": {
+                        "Start": {
+                            "Line": 98,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 98,
+                            "Character": 34
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_PLCity(interchangeable)",
+                    "Body": "",
+                    "Name": "PLCity(interchangeable)",
+                    "Type": "phraselist",
+                    "ListBody": [
+                        "    - seattle",
+                        "    - space needle",
+                        "    - SEATAC",
+                        "    - SEA"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 101,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 105,
+                            "Character": 10
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_getUserProfileIntent",
+                    "Body": "",
+                    "Name": "getUserProfileIntent",
+                    "Type": "intent",
+                    "Features": "PLCity",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 107,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 107,
+                            "Character": 49
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_myCity",
+                    "Body": "",
+                    "Name": "myCity",
+                    "Type": "ml",
+                    "Features": "PLCity",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 110,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 110,
+                            "Character": 31
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_regexZipcode",
+                    "Body": "",
+                    "Name": "regexZipcode",
+                    "Type": "regex",
+                    "RegexDefinition": "/[0-9]{5}/",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 112,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 112,
+                            "Character": 34
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_address2",
+                    "Body": "",
+                    "Name": "address2",
+                    "Type": "ml",
+                    "Roles": "fromAddress2, toAddress2",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 115,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 115,
+                            "Character": 39
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_address2",
+                    "Body": "",
+                    "Name": "address2",
+                    "ListBody": [
+                        "    - @ number 'door number'",
+                        "    - @ ml streetName",
+                        "    - @ ml location",
+                        "        - @ ml city usesFeature PLCity",
+                        "        - @ regexZipcode zipcode "
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 116,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 121,
+                            "Character": 34
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_personName",
+                    "Body": "",
+                    "Name": "personName",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 127,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 127,
+                            "Character": 22
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_userN",
+                    "Body": "",
+                    "Name": "userN",
+                    "Type": "ml",
+                    "Roles": "fistN, lastN",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 130,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 130,
+                            "Character": 33
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_userN",
+                    "Body": "",
+                    "Name": "userN",
+                    "Features": "personName",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 133,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 133,
+                            "Character": 31
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_getUserNameIntent",
+                    "Body": "",
+                    "Name": "getUserNameIntent",
+                    "Type": "intent",
+                    "Features": "personName",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 136,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 136,
+                            "Character": 50
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserProfile",
+            "IntentNameLine": "# getUserProfile",
+            "Range": {
+                "Start": {
+                    "Line": 97,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 138,
+                    "Character": 19
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserNameIntent",
+            "Body": "- utterances\n\n> multiple entities as a feature to a model\n@ intent getUserNameIntent usesFeature personName\n\n> intent as a feature to another intent\n@ intent getUserProfileI usesFeature getUserNameIntent\n",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "utterances",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- utterances",
+                    "range": {
+                        "Start": {
+                            "Line": 140,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 140,
+                            "Character": 12
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_getUserNameIntent",
+                    "Body": "",
+                    "Name": "getUserNameIntent",
+                    "Type": "intent",
+                    "Features": "personName",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 143,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 143,
+                            "Character": 50
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_getUserProfileI",
+                    "Body": "",
+                    "Name": "getUserProfileI",
+                    "Type": "intent",
+                    "Features": "getUserNameIntent",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 146,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 146,
+                            "Character": 55
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserNameIntent",
+            "IntentNameLine": "# getUserNameIntent",
+            "Range": {
+                "Start": {
+                    "Line": 139,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 147,
+                    "Character": 0
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserProfileI",
+            "Body": "- utterances\n\n> MACHINE_LEARNED ENTITY WITH CHILDREN\n@ list listCity\n@ prebuilt number\n@ prebuilt geographyV2\n@ regex regexZipcode = /[0-9]{5}/\n@ ml address hasRoles fromAddress, toAddress\n@ address =\n    - @ number 'door number'\n    - @ ml streetName\n    - @ ml location usesFeature geographyV2\n        - @ listCity city\n        - @ regexZipcode zipcode\n\n\n",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "utterances",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- utterances",
+                    "range": {
+                        "Start": {
+                            "Line": 149,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 149,
+                            "Character": 12
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_listCity",
+                    "Body": "",
+                    "Name": "listCity",
+                    "Type": "list",
+                    "SynonymsList": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 152,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 152,
+                            "Character": 16
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_number",
+                    "Body": "",
+                    "Name": "number",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 153,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 153,
+                            "Character": 18
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_geographyV2",
+                    "Body": "",
+                    "Name": "geographyV2",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 154,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 154,
+                            "Character": 23
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_regexZipcode",
+                    "Body": "",
+                    "Name": "regexZipcode",
+                    "Type": "regex",
+                    "RegexDefinition": "/[0-9]{5}/",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 155,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 155,
+                            "Character": 34
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_address",
+                    "Body": "",
+                    "Name": "address",
+                    "Type": "ml",
+                    "Roles": "fromAddress, toAddress",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 156,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 156,
+                            "Character": 45
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_address",
+                    "Body": "",
+                    "Name": "address",
+                    "ListBody": [
+                        "    - @ number 'door number'",
+                        "    - @ ml streetName",
+                        "    - @ ml location usesFeature geographyV2",
+                        "        - @ listCity city",
+                        "        - @ regexZipcode zipcode"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 157,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 162,
+                            "Character": 33
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserProfileI",
+            "IntentNameLine": "# getUserProfileI",
+            "Range": {
+                "Start": {
+                    "Line": 148,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 165,
+                    "Character": 0
+                }
+            }
+        },
+        {
+            "Errors": [
+                {
+                    "Message": "no utterances found for intent definition: \"# getUserProfileIntent\"",
+                    "Range": {
+                        "Start": {
+                            "Line": 166,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 166,
+                            "Character": 22
+                        }
+                    },
+                    "Severity": "WARN"
+                }
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserProfileIntent",
+            "Body": "@ prebuilt number\n\n> LABELS",
+            "UtteranceAndEntitiesMap": [
+
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_number",
+                    "Body": "",
+                    "Name": "number",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 167,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 167,
+                            "Character": 18
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserProfileIntent",
+            "IntentNameLine": "# getUserProfileIntent",
+            "Range": {
+                "Start": {
+                    "Line": 166,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 169,
+                    "Character": 8
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_getUserP",
+            "Body": "- my name is vishwac and I'm 36 years old\n    - my name is {@userProfile = vishwac and I'm 36 years old}\n    - my name is {@fstN = vishwac} and I'm 36 years old\n    - my name is vishwac and I'm {@userAge = 36} years old\n- i'm {@userProfile = {@fstN = vishwac}}\n\n@ ml userProfile\n    - @personName fstN\n    - @personName lstN\n\n@ prebuilt personName\n\n> EXTERNAL REFERENCES",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "my name is vishwac and I'm 36 years old",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- my name is vishwac and I'm 36 years old",
+                    "range": {
+                        "Start": {
+                            "Line": 171,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 171,
+                            "Character": 41
+                        }
+                    }
+                },
+                {
+                    "utterance": "my name is vishwac and I'm 36 years old",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "@userProfile",
+                            "role": "",
+                            "startPos": 11,
+                            "endPos": 38
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "    - my name is {@userProfile = vishwac and I'm 36 years old}",
+                    "range": {
+                        "Start": {
+                            "Line": 172,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 172,
+                            "Character": 62
+                        }
+                    }
+                },
+                {
+                    "utterance": "my name is vishwac and I'm 36 years old",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "@fstN",
+                            "role": "",
+                            "startPos": 11,
+                            "endPos": 17
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "    - my name is {@fstN = vishwac} and I'm 36 years old",
+                    "range": {
+                        "Start": {
+                            "Line": 173,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 173,
+                            "Character": 55
+                        }
+                    }
+                },
+                {
+                    "utterance": "my name is vishwac and I'm 36 years old",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "@userAge",
+                            "role": "",
+                            "startPos": 27,
+                            "endPos": 28
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "    - my name is vishwac and I'm {@userAge = 36} years old",
+                    "range": {
+                        "Start": {
+                            "Line": 174,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 174,
+                            "Character": 58
+                        }
+                    }
+                },
+                {
+                    "utterance": "i'm vishwac",
+                    "entities": [
+                        {
+                            "type": "entities",
+                            "entity": "@fstN",
+                            "role": "",
+                            "startPos": 4,
+                            "endPos": 10
+                        },
+                        {
+                            "type": "entities",
+                            "entity": "@userProfile",
+                            "role": "",
+                            "startPos": 4,
+                            "endPos": 10
+                        }
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- i'm {@userProfile = {@fstN = vishwac}}",
+                    "range": {
+                        "Start": {
+                            "Line": 175,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 175,
+                            "Character": 40
+                        }
+                    }
+                }
+            ],
+            "Entities": [
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_userProfile",
+                    "Body": "",
+                    "Name": "userProfile",
+                    "Type": "ml",
+                    "ListBody": [
+                        "    - @personName fstN",
+                        "    - @personName lstN"
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 177,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 179,
+                            "Character": 23
+                        }
+                    }
+                },
+                {
+                    "Errors": [
+
+                    ],
+                    "SectionType": "newEntitySection",
+                    "Id": "newEntitySection_personName",
+                    "Body": "",
+                    "Name": "personName",
+                    "Type": "prebuilt",
+                    "ListBody": [
+
+                    ],
+                    "Range": {
+                        "Start": {
+                            "Line": 181,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 181,
+                            "Character": 22
+                        }
+                    }
+                }
+            ],
+            "Name": "getUserP",
+            "IntentNameLine": "# getUserP",
+            "Range": {
+                "Start": {
+                    "Line": 170,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 183,
+                    "Character": 21
+                }
+            }
+        },
+        {
+            "Errors": [
+
+            ],
+            "SectionType": "simpleIntentSection",
+            "Id": "simpleIntentSection_None",
+            "Body": "- [None uttearnces](./test_help.lu#Help)",
+            "UtteranceAndEntitiesMap": [
+                {
+                    "utterance": "[None uttearnces](./test_help.lu#Help)",
+                    "entities": [
+
+                    ],
+                    "errorMsgs": [
+
+                    ],
+                    "contextText": "- [None uttearnces](./test_help.lu#Help)",
+                    "range": {
+                        "Start": {
+                            "Line": 185,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 185,
+                            "Character": 40
+                        }
+                    },
+                    "references": {
+                        "source": "./test_help.lu#Help"
+                    }
+                }
+            ],
+            "Entities": [
+
+            ],
+            "Name": "None",
+            "IntentNameLine": "# None",
+            "Range": {
+                "Start": {
+                    "Line": 184,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 186,
+                    "Character": 0
+                }
+            }
+        }
+    ],
+    "content": "> This is a comment and will be ignored.\n> INTENT\n# Greeting\n- hi\n- hello\n\n> ML ENTITY. Without an explicit entity definition, 'userName' defaults to 'ml' entity type.\n# getUserName\n- my name is {username=vishwac}\n\n> PREBUILT ENTITIES\n@ prebuilt number numOfGuests, age\n\n> COMPOSITE ENTITIES\n# setThermostat\n> This utterance labels ‘thermostat to 72’ as composite entity deviceTemperature\n    - Please set {deviceTemperature = thermostat to 72}\n> This is an example utterance that labels ‘owen’ as customDevice (ml entity) and wraps ‘owen to 72’ with the ‘deviceTemperature’ composite entity\n    - Set {deviceTemperature = {customDevice = owen} to 72}\n\n> Define a composite entity ‘deviceTemperature’ that has device (list entity), customDevice (ml entity), temperature (pre-built entity) as children\n\n@ composite deviceTemperature = [device, customDevice, temperature]\n\n@ list device =\n\t- thermostat :\n\t\t- Thermostat\n\t\t- Heater\n\t\t- AC\n\t\t- Air conditioner\n\t- refrigerator :\n\t\t- Fridge\n    \t- Cooler\n\n@ ml customDevice\n\n@ prebuilt temperature\n\n> REGULAR EXPRESSION ENTITY\n> from, to are roles to hrf-number.\n@ regex hrf-number from, to = /hrf-[0-9]{6}/\n\n> ROLES\n\n# AskForUserName\n- {userName:firstName=vishwac} {userName:lastName=kannan}\n- I'm {userName:firstName=vishwac}\n- my first name is {userName:firstName=vishwac}\n- {userName=vishwac} is my name\n\n> In patterns, you can use roles using the {\\<entityName\\>:\\<roleName\\>} notation\n# getUserNameRoles\n- call me {name:userName}\n- I'm {name:userName}\n- my name is {name:userName}\n\n> roles can be specified for list entity types as well - in this case fromCity and toCity are added as roles to the 'city' list entity defined further below\n# BookFlight\n- book flight from {city:fromCity} to {city:toCity}\n- [can you] get me a flight from {city:fromCity} to {city:toCity}\n- get me a flight to {city:toCity}\n- I need to fly from {city:fromCity}\n\n$city:Seattle=\n- Seattle\n- Tacoma\n- SeaTac\n- SEA\n\n$city:Portland=\n- Portland\n- PDX\n\n> PATTERNS\n# DeleteAlarm\n- delete the {alarmTime} alarm\n\n> PHRASE LIST DEFINITION\n@ phraseList Want =\n    - require\n\t- need\n\t- desire\n\t- know\n\n@ phraselist question(interchangeable) =\n    - are you\n    - you are\n\n\n@ phraselist abc(interchangeable) =\n    - are you\n    - you are\n\n@ abc disabled\n\n> TIE FEATURES TO SPECIFIC MODEL\n# getUserProfile\n- my name is {@userName = vishwac}\n\n> phrase list definition\n@ phraselist PLCity(interchangeable) =\n    - seattle\n    - space needle\n    - SEATAC\n    - SEA\n> phrase list as feature to intent (also applicable to entities)\n@ intent getUserProfileIntent usesFeature PLCity\n\n> phrase list as a feature to an ml entity.\n@ ml myCity usesFeature PLCity\n\n@ regex regexZipcode = /[0-9]{5}/\n\n> phrase list as feature to n-depth entity with phrase list as a feature\n@ ml address2 fromAddress2, toAddress2\n@ address2 =\n    - @ number 'door number'\n    - @ ml streetName\n    - @ ml location\n        - @ ml city usesFeature PLCity\n        - @ regexZipcode zipcode \n\n\n> ADD ENTITY OR INTENT AS FEATURE\n> entity definition - @ <entityType> <entityName> [<roles>]\n\n@ prebuilt personName\n\n> entity definition with roles\n@ ml userN hasRoles fistN, lastN\n\n> add entity as a feature to another entity\n@ userN usesFeature personName\n\n> add entity as feature to an intent\n@ intent getUserNameIntent usesFeature personName\n\n> Intent definition\n# getUserNameIntent\n- utterances\n\n> multiple entities as a feature to a model\n@ intent getUserNameIntent usesFeature personName\n\n> intent as a feature to another intent\n@ intent getUserProfileI usesFeature getUserNameIntent\n\n# getUserProfileI\n- utterances\n\n> MACHINE_LEARNED ENTITY WITH CHILDREN\n@ list listCity\n@ prebuilt number\n@ prebuilt geographyV2\n@ regex regexZipcode = /[0-9]{5}/\n@ ml address hasRoles fromAddress, toAddress\n@ address =\n    - @ number 'door number'\n    - @ ml streetName\n    - @ ml location usesFeature geographyV2\n        - @ listCity city\n        - @ regexZipcode zipcode\n\n\n\n# getUserProfileIntent\n@ prebuilt number\n\n> LABELS\n# getUserP\n- my name is vishwac and I'm 36 years old\n    - my name is {@userProfile = vishwac and I'm 36 years old}\n    - my name is {@fstN = vishwac} and I'm 36 years old\n    - my name is vishwac and I'm {@userAge = 36} years old\n- i'm {@userProfile = {@fstN = vishwac}}\n\n@ ml userProfile\n    - @personName fstN\n    - @personName lstN\n\n@ prebuilt personName\n\n> EXTERNAL REFERENCES\n# None\n- [None uttearnces](./test_help.lu#Help)",
+    "errors": [
+        {
+            "Message": "no utterances found for intent definition: \"# getUserProfileIntent\"",
+            "Range": {
+                "Start": {
+                    "Line": 166,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 166,
+                    "Character": 22
+                }
+            },
+            "Severity": "WARN"
+        }
+    ]
+}

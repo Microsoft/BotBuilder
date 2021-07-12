@@ -1,0 +1,272 @@
+{
+    "sections": [
+        {
+            "Errors": [],
+            "SectionType": "modelInfoSection",
+            "Id": "modelInfoSection_> !# @enableSections = true",
+            "Body": "",
+            "ModelInfo": "> !# @enableSections = true",
+            "Range": {
+                "Start": {
+                    "Line": 1,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 1,
+                    "Character": 27
+                }
+            }
+        },
+        {
+            "Errors": [],
+            "SectionType": "nestedIntentSection",
+            "Id": "nestedIntentSection_Greet",
+            "Body": "## HelloGreetingSection\n- hii\n@simple e1\n## ByeGreetingSection\n- bye\n@ ml e2",
+            "Name": "Greet",
+            "SimpleIntentSections": [
+                {
+                    "Errors": [],
+                    "SectionType": "simpleIntentSection",
+                    "Id": "simpleIntentSection_HelloGreetingSection",
+                    "Body": "- hii\n@simple e1",
+                    "UtteranceAndEntitiesMap": [
+                        {
+                            "utterance": "hii",
+                            "entities": [],
+                            "errorMsgs": [],
+                            "contextText": "- hii",
+                            "range": {
+                                "Start": {
+                                    "Line": 4,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 4,
+                                    "Character": 5
+                                }
+                            }
+                        }
+                    ],
+                    "Entities": [
+                        {
+                            "Errors": [],
+                            "SectionType": "newEntitySection",
+                            "Id": "newEntitySection_e1",
+                            "Body": "",
+                            "Name": "e1",
+                            "Type": "simple",
+                            "ListBody": [],
+                            "Range": {
+                                "Start": {
+                                    "Line": 5,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 5,
+                                    "Character": 11
+                                }
+                            }
+                        }
+                    ],
+                    "Name": "HelloGreetingSection",
+                    "IntentNameLine": "# HelloGreetingSection",
+                    "Range": {
+                        "Start": {
+                            "Line": 3,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 5,
+                            "Character": 10
+                        }
+                    }
+                },
+                {
+                    "Errors": [],
+                    "SectionType": "simpleIntentSection",
+                    "Id": "simpleIntentSection_ByeGreetingSection",
+                    "Body": "- bye\n@ ml e2",
+                    "UtteranceAndEntitiesMap": [
+                        {
+                            "utterance": "bye",
+                            "entities": [],
+                            "errorMsgs": [],
+                            "contextText": "- bye",
+                            "range": {
+                                "Start": {
+                                    "Line": 7,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 7,
+                                    "Character": 5
+                                }
+                            }
+                        }
+                    ],
+                    "Entities": [
+                        {
+                            "Errors": [],
+                            "SectionType": "newEntitySection",
+                            "Id": "newEntitySection_e2",
+                            "Body": "",
+                            "Name": "e2",
+                            "Type": "ml",
+                            "ListBody": [],
+                            "Range": {
+                                "Start": {
+                                    "Line": 8,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 8,
+                                    "Character": 7
+                                }
+                            }
+                        }
+                    ],
+                    "Name": "ByeGreetingSection",
+                    "IntentNameLine": "## ByeGreetingSection",
+                    "Range": {
+                        "Start": {
+                            "Line": 6,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 8,
+                            "Character": 7
+                        }
+                    }
+                }
+            ],
+            "Range": {
+                "Start": {
+                    "Line": 2,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 8,
+                    "Character": 7
+                }
+            },
+            "SimpleIntentSection": [
+                {
+                    "Errors": [],
+                    "SectionType": "simpleIntentSection",
+                    "Id": "simpleIntentSection_HelloGreetingSection",
+                    "Body": "- hii\n@simple e1",
+                    "UtteranceAndEntitiesMap": [
+                        {
+                            "utterance": "hii",
+                            "entities": [],
+                            "errorMsgs": [],
+                            "contextText": "- hii",
+                            "range": {
+                                "Start": {
+                                    "Line": 4,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 4,
+                                    "Character": 5
+                                }
+                            }
+                        }
+                    ],
+                    "Entities": [
+                        {
+                            "Errors": [],
+                            "SectionType": "newEntitySection",
+                            "Id": "newEntitySection_e1",
+                            "Body": "",
+                            "Name": "e1",
+                            "Type": "simple",
+                            "ListBody": [],
+                            "Range": {
+                                "Start": {
+                                    "Line": 5,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 5,
+                                    "Character": 11
+                                }
+                            }
+                        }
+                    ],
+                    "Name": "HelloGreetingSection",
+                    "IntentNameLine": "# HelloGreetingSection",
+                    "Range": {
+                        "Start": {
+                            "Line": 3,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 5,
+                            "Character": 10
+                        }
+                    }
+                },
+                {
+                    "Errors": [],
+                    "SectionType": "simpleIntentSection",
+                    "Id": "simpleIntentSection_ByeGreetingSection",
+                    "Body": "- bye\n@ ml e2",
+                    "UtteranceAndEntitiesMap": [
+                        {
+                            "utterance": "bye",
+                            "entities": [],
+                            "errorMsgs": [],
+                            "contextText": "- bye",
+                            "range": {
+                                "Start": {
+                                    "Line": 7,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 7,
+                                    "Character": 5
+                                }
+                            }
+                        }
+                    ],
+                    "Entities": [
+                        {
+                            "Errors": [],
+                            "SectionType": "newEntitySection",
+                            "Id": "newEntitySection_e2",
+                            "Body": "",
+                            "Name": "e2",
+                            "Type": "ml",
+                            "ListBody": [],
+                            "Range": {
+                                "Start": {
+                                    "Line": 8,
+                                    "Character": 0
+                                },
+                                "End": {
+                                    "Line": 8,
+                                    "Character": 7
+                                }
+                            }
+                        }
+                    ],
+                    "Name": "ByeGreetingSection",
+                    "IntentNameLine": "## ByeGreetingSection",
+                    "Range": {
+                        "Start": {
+                            "Line": 6,
+                            "Character": 0
+                        },
+                        "End": {
+                            "Line": 8,
+                            "Character": 7
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "content": "> !# @enableSections = true\n# Greet\n## HelloGreetingSection\n- hii\n@simple e1\n## ByeGreetingSection\n- bye\n@ ml e2",
+    "errors": []
+}

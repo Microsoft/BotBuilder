@@ -1,0 +1,24 @@
+{
+    "sections": [
+        {
+            "Errors": [],
+            "SectionType": "importSection",
+            "Id": "importSection_./all.lu",
+            "Body": "",
+            "Description": "All LU files",
+            "Path": "./all.lu",
+            "Range": {
+                "Start": {
+                    "Line": 2,
+                    "Character": 0
+                },
+                "End": {
+                    "Line": 2,
+                    "Character": 24
+                }
+            }
+        }
+    ],
+    "content": "> You can include references to other .lu files\n[All LU files](./all.lu)",
+    "errors": []
+}

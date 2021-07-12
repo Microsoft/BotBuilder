@@ -1,0 +1,185 @@
+﻿> This is a comment and will be ignored.
+> INTENT
+# Greeting
+- hi
+- hello
+
+> ML ENTITY. Without an explicit entity definition, 'userName' defaults to 'ml' entity type.
+# getUserName
+- my name is {username=vishwac}
+
+> PREBUILT ENTITIES
+@ prebuilt number numOfGuests, age
+
+> COMPOSITE ENTITIES
+# setThermostat
+> This utterance labels ‘thermostat to 72’ as composite entity deviceTemperature
+    - Please set {deviceTemperature = thermostat to 72}
+> This is an example utterance that labels ‘owen’ as customDevice (ml entity) and wraps ‘owen to 72’ with the ‘deviceTemperature’ composite entity
+    - Set {deviceTemperature = {customDevice = owen} to 72}
+
+> Define a composite entity ‘deviceTemperature’ that has device (list entity), customDevice (ml entity), temperature (pre-built entity) as children
+
+@ composite deviceTemperature = [device, customDevice, temperature]
+
+@ list device =
+	- thermostat :
+		- Thermostat
+		- Heater
+		- AC
+		- Air conditioner
+	- refrigerator :
+		- Fridge
+    	- Cooler
+
+@ ml customDevice
+
+@ prebuilt temperature
+
+> REGULAR EXPRESSION ENTITY
+> from, to are roles to hrf-number.
+@ regex hrf-number from, to = /hrf-[0-9]{6}/
+
+> ROLES
+
+# AskForUserName
+- {userName:firstName=vishwac} {userName:lastName=kannan}
+- I'm {userName:firstName=vishwac}
+- my first name is {userName:firstName=vishwac}
+- {userName=vishwac} is my name
+
+> In patterns, you can use roles using the {\<entityName\>:\<roleName\>} notation
+# getUserNameRoles
+- call me {name:userName}
+- I'm {name:userName}
+- my name is {name:userName}
+
+> roles can be specified for list entity types as well - in this case fromCity and toCity are added as roles to the 'city' list entity defined further below
+# BookFlight
+- book flight from {city:fromCity} to {city:toCity}
+- [can you] get me a flight from {city:fromCity} to {city:toCity}
+- get me a flight to {city:toCity}
+- I need to fly from {city:fromCity}
+
+$city:Seattle=
+- Seattle
+- Tacoma
+- SeaTac
+- SEA
+
+$city:Portland=
+- Portland
+- PDX
+
+> PATTERNS
+# DeleteAlarm
+- delete the {alarmTime} alarm
+
+> PHRASE LIST DEFINITION
+@ phraseList Want =
+    - require
+	- need
+	- desire
+	- know
+
+@ phraselist question(interchangeable) =
+    - are you
+    - you are
+
+
+@ phraselist abc(interchangeable) =
+    - are you
+    - you are
+
+@ abc disabled
+
+> TIE FEATURES TO SPECIFIC MODEL
+# getUserProfile
+- my name is {@userName = vishwac}
+
+> phrase list definition
+@ phraselist PLCity(interchangeable) =
+    - seattle
+    - space needle
+    - SEATAC
+    - SEA
+> phrase list as feature to intent (also applicable to entities)
+@ intent getUserProfileIntent usesFeature PLCity
+
+> phrase list as a feature to an ml entity.
+@ ml myCity usesFeature PLCity
+
+@ regex regexZipcode = /[0-9]{5}/
+
+> phrase list as feature to n-depth entity with phrase list as a feature
+@ ml address2 fromAddress2, toAddress2
+@ address2 =
+    - @ number 'door number'
+    - @ ml streetName
+    - @ ml location
+        - @ ml city usesFeature PLCity
+        - @ regexZipcode zipcode 
+
+
+> ADD ENTITY OR INTENT AS FEATURE
+> entity definition - @ <entityType> <entityName> [<roles>]
+
+@ prebuilt personName
+
+> entity definition with roles
+@ ml userN hasRoles fistN, lastN
+
+> add entity as a feature to another entity
+@ userN usesFeature personName
+
+> add entity as feature to an intent
+@ intent getUserNameIntent usesFeature personName
+
+> Intent definition
+# getUserNameIntent
+- utterances
+
+> multiple entities as a feature to a model
+@ intent getUserNameIntent usesFeature personName
+
+> intent as a feature to another intent
+@ intent getUserProfileI usesFeature getUserNameIntent
+
+# getUserProfileI
+- utterances
+
+> MACHINE_LEARNED ENTITY WITH CHILDREN
+@ list listCity
+@ prebuilt number
+@ prebuilt geographyV2
+@ regex regexZipcode = /[0-9]{5}/
+@ ml address hasRoles fromAddress, toAddress
+@ address =
+    - @ number 'door number'
+    - @ ml streetName
+    - @ ml location usesFeature geographyV2
+        - @ listCity city
+        - @ regexZipcode zipcode
+
+
+
+# getUserProfileIntent
+@ prebuilt number
+
+> LABELS
+# getUserP
+- my name is vishwac and I'm 36 years old
+    - my name is {@userProfile = vishwac and I'm 36 years old}
+    - my name is {@fstN = vishwac} and I'm 36 years old
+    - my name is vishwac and I'm {@userAge = 36} years old
+- i'm {@userProfile = {@fstN = vishwac}}
+
+@ ml userProfile
+    - @personName fstN
+    - @personName lstN
+
+@ prebuilt personName
+
+> EXTERNAL REFERENCES
+# None
+- [None uttearnces](./test_help.lu#Help)
