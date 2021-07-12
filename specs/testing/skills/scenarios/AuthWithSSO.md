@@ -17,6 +17,7 @@
 
 - Auth context: Public Cloud, Gov Cloud, Sandboxed
 - Delivery mode: Normal, ExpectReplies
+- Scenarios: webchat, bot to bot, teams
 
 ## Total test cases
 
