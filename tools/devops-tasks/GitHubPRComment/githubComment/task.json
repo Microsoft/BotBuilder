@@ -1,0 +1,70 @@
+{
+    "id": "5609d229-6359-4b0d-a21a-1207d7e11dfe",
+    "name": "github-pr-comment",
+    "friendlyName": "GitHub PR Comment",
+    "description": "Publish a comment on a GitHub pull request.",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Microsoft",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 2
+    },
+    "instanceNameFormat": "GitHub Comment Publisher",
+    "inputs": [
+        {
+            "name": "userToken",
+            "type": "string",
+            "label": "User Token",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "The user token to initiate the connection"
+        },
+        {
+            "name": "repository",
+            "type": "string",
+            "label": "Repository",
+            "defaultValue": "$(Build.Repository.Name)",
+            "required": true,
+            "helpMarkDown": "The full name of the repository where you want to make the comment(owner/repository)"
+        },
+        {
+            "name": "prNumber",
+            "type": "string",
+            "label": "Pull Request Number",
+            "defaultValue": "$(System.PullRequest.PullRequestNumber)",
+            "required": true,
+            "helpMarkDown": "The pull request to make a comment on"
+        },
+        {
+            "name": "bodyFilePath",
+            "type": "filePath",
+            "label": "Path to the body file/s",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Path to the .json files"
+        },
+        {
+            "name": "extension",
+            "type": "string",
+            "label": "Files extension",
+            "defaultValue": "txt",
+            "required": true,
+            "helpMarkDown": "Enter the files extension. Eg: txt"
+        },
+        {
+            "name": "getSubFolders",
+            "type": "boolean",
+            "label": "Use sub-folders",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Get all the .json files including the ones in sub-folders"
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "index.js"
+        }
+    }
+}

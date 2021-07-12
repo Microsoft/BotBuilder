@@ -1,0 +1,56 @@
+{
+    "manifestVersion": 1,
+     "id": "github-pr-comment",
+     "name": "GitHub PR Comment",
+     "version": "0.1.2",
+     "publisher": "Microsoft",
+     "targets": [
+         {
+             "id": "Microsoft.VisualStudio.Services"
+         }
+     ],    
+    "description": "Automatically creates a comment on a Pull Request",
+    "categories": [
+         "Azure Pipelines"
+     ],
+    "icons": {
+         "default": "media/extension-icon.png"        
+     },
+     "content": {
+         "details": {
+             "path": "readme.md"
+         }
+     },
+     "links": {
+         "repository": {
+             "uri": "https://github.com/microsoft/botframework-sdk/tree/main/tools/devops-tasks/ApiCompat"
+         },
+         "issues": {
+             "uri": "https://github.com/microsoft/botframework-sdk/issues"
+         }
+     },
+     "repository": {
+         "type": "git",
+         "uri": "https://github.com/microsoft/botframework-sdk/tree/main/tools/devops-tasks/ApiCompat"
+     },
+    "files": [
+         {
+             "path": "githubComment"
+         }
+     ],
+    "contributions": [
+         {
+             "id": "custom-publish-comment-task",
+             "type": "ms.vss-distributed-task.task",
+             "targets": [
+                 "ms.vss-distributed-task.tasks"
+             ],
+             "properties": {
+                 "name": "githubComment"
+             }
+     }
+     ],
+     "galleryFlags": [
+         "Public"
+     ]
+}
