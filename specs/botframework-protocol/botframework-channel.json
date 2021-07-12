@@ -560,7 +560,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ChannelAccount"
-              }
+              },
+              "x-omitempty": true
             }
           },
           "default": {
@@ -579,7 +580,7 @@
         ],
         "summary": "GetConversationMember",
         "description": "Get a single member of a conversation.\r\n\r\nThis REST API takes a ConversationId and MemberId and returns a single ChannelAccount object, if that member is found in this conversation.",
-        "operationId": "Conversations_GetConversationMembers",
+        "operationId": "Conversations_GetConversationMember",
         "consumes": [],
         "produces": [
           "application/json",
@@ -748,7 +749,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ChannelAccount"
-              }
+              },
+              "x-omitempty": true
             }
           },
           "default": {
@@ -844,7 +846,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/AttachmentView"
-          }
+          },
+          "x-omitempty": true
         }
       }
     },
@@ -923,7 +926,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ChannelAccount"
-          }
+          },
+          "x-omitempty": true
         },
         "topicName": {
           "description": "(Optional) Topic of the conversation (if supported by the channel)",
@@ -980,12 +984,14 @@
         "timestamp": {
           "format": "date-time",
           "description": "Contains the date and time that the message was sent, in UTC, expressed in ISO-8601 format.",
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "localTimestamp": {
           "format": "date-time",
           "description": "Contains the local date and time of the message, expressed in ISO-8601 format.\r\nFor example, 2016-09-23T13:07:49.4714686-07:00.",
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "localTimezone": {
           "description": "Contains the name of the local timezone of the message, expressed in IANA Time Zone database format.\r\nFor example, America/Los_Angeles.",
@@ -1028,28 +1034,32 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ChannelAccount"
-          }
+          },
+          "x-omitempty": true
         },
         "membersRemoved": {
           "description": "The collection of members removed from the conversation.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ChannelAccount"
-          }
+          },
+          "x-omitempty": true
         },
         "reactionsAdded": {
           "description": "The collection of reactions added to the conversation.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/MessageReaction"
-          }
+          },
+          "x-omitempty": true
         },
         "reactionsRemoved": {
           "description": "The collection of reactions removed from the conversation.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/MessageReaction"
-          }
+          },
+          "x-omitempty": true
         },
         "topicName": {
           "description": "The updated topic name of the conversation.",
@@ -1088,14 +1098,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Attachment"
-          }
+          },
+          "x-omitempty": true
         },
         "entities": {
           "description": "Represents the entities that were mentioned in the message.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Entity"
-          }
+          },
+          "x-omitempty": true
         },
         "channelData": {
           "description": "Contains channel-specific content.",
@@ -1136,7 +1148,8 @@
         "expiration": {
           "format": "date-time",
           "description": "The time at which the activity should be considered to be \"expired\" and should not be presented to the recipient.",
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "importance": {
           "$ref": "#/definitions/ActivityImportance",
@@ -1151,14 +1164,16 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "x-omitempty": true
         },
         "textHighlights": {
           "description": "The collection of text fragments to highlight when the activity contains a ReplyToId value.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/TextHighlight"
-          }
+          },
+          "x-omitempty": true
         },
         "semanticAction": {
           "$ref": "#/definitions/SemanticAction",
@@ -1511,14 +1526,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardImage"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Set of actions applicable to the current card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "tap": {
           "$ref": "#/definitions/CardAction",
@@ -1569,14 +1586,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MediaUrl"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Actions on this card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "shareable": {
           "description": "This content may be shared with others (default:true)",
@@ -1657,14 +1676,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MediaUrl"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Actions on this card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "shareable": {
           "description": "This content may be shared with others (default:true)",
@@ -1713,14 +1734,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardImage"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Set of actions applicable to the current card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "tap": {
           "$ref": "#/definitions/CardAction",
@@ -1753,14 +1776,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MediaUrl"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Actions on this card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "shareable": {
           "description": "This content may be shared with others (default:true)",
@@ -1801,14 +1826,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Fact"
-          }
+          },
+          "x-omitempty": true
         },
         "items": {
           "description": "Array of Receipt Items",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ReceiptItem"
-          }
+          },
+          "x-omitempty": true
         },
         "tap": {
           "$ref": "#/definitions/CardAction",
@@ -1831,7 +1858,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         }
       }
     },
@@ -1896,7 +1924,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         }
       }
     },
@@ -1921,7 +1950,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         }
       }
     },
@@ -1964,14 +1994,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardImage"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Set of actions applicable to the current card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "tap": {
           "$ref": "#/definitions/CardAction",
@@ -2004,14 +2036,16 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MediaUrl"
-          }
+          },
+          "x-omitempty": true
         },
         "buttons": {
           "description": "Actions on this card",
           "type": "array",
           "items": {
             "$ref": "#/definitions/CardAction"
-          }
+          },
+          "x-omitempty": true
         },
         "shareable": {
           "description": "This content may be shared with others (default:true)",
@@ -2195,7 +2229,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Activity"
-          }
+          },
+          "x-omitempty": true
         }
       }
     },
